@@ -4,13 +4,17 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1f3a5f">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>SCI LMS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
 :root{
-  --navy:#1f3a5f; --navy-dark:#162b47; --teal:#2a7f8e; --bg:#f4f6f9; --card:#ffffff;
+  --navy:#1f3a5f; --navy-dark:#162b47; --teal:#2a7f8e; --bg:#f4f6f9; --card:#ffffff; --primary:#1f3a5f; --soft:#eef2f7; --soft2:#f8fafc; --hl:#eef6f8; --okbg:#e0f1e7; --warnbg:#f3ead7; --dangerbg:#fbeceb; --line2:#c7cfda;
   --text:#1e2630; --muted:#6a7482; --line:#dde3ea; --danger:#b3372f; --ok:#2e7d4f; --warn:#a8741a;
   --radius:10px; --shadow:0 1px 3px rgba(20,35,60,.08),0 4px 14px rgba(20,35,60,.06);
   --side-w:250px;
@@ -22,9 +26,9 @@ body{font-family:'Cairo','Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg)
 h1,h2,h3{margin:0;color:var(--navy)}
 a{color:var(--teal)}
 :focus-visible{outline:3px solid #7fb6c0;outline-offset:2px}
-.skip{position:absolute;right:-9999px;top:0;background:#fff;padding:8px 12px;z-index:100}
+.skip{position:absolute;right:-9999px;top:0;background:var(--card);padding:8px 12px;z-index:100}
 .skip:focus{right:8px;top:8px}
-.noscript{padding:16px;background:#fff3cd;margin:0}
+.noscript{padding:16px;background:var(--card)3cd;margin:0}
 
 .loadbar{position:fixed;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--navy),var(--teal));background-size:200% 100%;animation:load 1s linear infinite;z-index:300}
 @keyframes load{to{background-position:-200% 0}}
@@ -35,7 +39,7 @@ a{color:var(--teal)}
 .brand{text-align:center;margin-bottom:22px}
 .brand h1{font-size:19px;margin-top:10px}
 .brand-sub{margin:4px 0 0;color:var(--muted);font-size:13px}
-.brand-mark{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;font-weight:700;letter-spacing:1px}
+.brand-mark{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:var(--primary);color:#fff;font-weight:700;letter-spacing:1px}
 .brand-mark.small{width:34px;height:34px;border-radius:9px;font-size:12px;background:var(--teal)}
 
 /* Shell */
@@ -76,24 +80,24 @@ a{color:var(--teal)}
 .table-wrap{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:640px}
 th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
-th{background:#eef2f7;color:var(--navy);font-weight:600;font-size:13px}
+th{background:var(--soft);color:var(--navy);font-weight:600;font-size:13px}
 th button{background:none;border:0;font:inherit;color:inherit;cursor:pointer;padding:0}
-tbody tr:hover{background:#f8fafc}
+tbody tr:hover{background:var(--soft2)}
 td .row-actions{display:flex;gap:6px;flex-wrap:wrap}
 .pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;color:var(--muted);font-size:13px;flex-wrap:wrap}
 
 /* Controls */
-.btn{font:inherit;border:1px solid var(--line);background:#fff;color:var(--text);padding:7px 14px;border-radius:8px;cursor:pointer}
-.btn:hover{background:#f1f4f8}
-.btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--text);padding:7px 14px;border-radius:8px;cursor:pointer}
+.btn:hover{background:var(--soft)}
+.btn.primary{background:var(--primary);border-color:var(--navy);color:#fff}
 .btn.primary:hover{background:var(--navy-dark)}
 .btn.danger{color:var(--danger);border-color:#e3b8b4}
 .btn.sm{padding:3px 10px;font-size:13px}
 .btn.block{width:100%;padding:10px}
 .btn:disabled{opacity:.55;cursor:not-allowed}
 .icon-btn{background:none;border:0;font-size:20px;cursor:pointer;padding:4px 8px;border-radius:6px;color:var(--navy)}
-.icon-btn:hover{background:#eef2f7}
-input,select,textarea{font:inherit;width:100%;padding:8px 10px;border:1px solid #c7cfda;border-radius:8px;background:#fff;color:var(--text)}
+.icon-btn:hover{background:var(--soft)}
+input,select,textarea{font:inherit;width:100%;padding:8px 10px;border:1px solid var(--line2);border-radius:8px;background:var(--card);color:var(--text)}
 input[type=checkbox]{width:auto}
 .toolbar select{width:auto;min-width:150px}
 .field{margin-bottom:12px}
@@ -101,45 +105,83 @@ input[type=checkbox]{width:auto}
 .field-check label{font-weight:400;font-size:14px;display:flex;gap:8px;align-items:center}
 .req{color:var(--danger)}
 .ferr{color:var(--danger);font-size:12px;min-height:0}
-.form-error{background:#fbeceb;color:var(--danger);border:1px solid #efc9c6;padding:8px 12px;border-radius:8px;margin-bottom:12px;font-size:14px}
+.form-error{background:var(--dangerbg);color:var(--danger);border:1px solid #efc9c6;padding:8px 12px;border-radius:8px;margin-bottom:12px;font-size:14px}
 .form-actions{display:flex;gap:10px;margin-top:6px}
-.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;background:#e8edf3;color:#38465a}
-.badge.s-active{background:#e0f1e7;color:var(--ok)}
-.badge.s-disabled,.badge.s-suspended{background:#f8e1df;color:var(--danger)}
-.badge.s-inactive,.badge.s-graduated{background:#f3ead7;color:var(--warn)}
-.badge.s-published,.badge.s-completed{background:#e0f1e7;color:var(--ok)}
-.badge.s-draft,.badge.s-pending,.badge.s-hidden{background:#f3ead7;color:var(--warn)}
-.badge.s-archived,.badge.s-cancelled{background:#f8e1df;color:var(--danger)}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;background:var(--soft);color:#38465a}
+.badge.s-active{background:var(--okbg);color:var(--ok)}
+.badge.s-disabled,.badge.s-suspended{background:var(--dangerbg);color:var(--danger)}
+.badge.s-inactive,.badge.s-graduated{background:var(--warnbg);color:var(--warn)}
+.badge.s-published,.badge.s-completed{background:var(--okbg);color:var(--ok)}
+.badge.s-draft,.badge.s-pending,.badge.s-hidden{background:var(--warnbg);color:var(--warn)}
+.badge.s-archived,.badge.s-cancelled{background:var(--dangerbg);color:var(--danger)}
 .modal.wide{max-width:980px}
-.progress{height:8px;background:#e6ebf1;border-radius:999px;overflow:hidden;margin:6px 0}
+.progress{height:8px;background:var(--soft);border-radius:999px;overflow:hidden;margin:6px 0}
 .progress>span{display:block;height:100%;background:var(--teal)}
-.badge.s-paid,.badge.s-approved{background:#e0f1e7;color:var(--ok)}
-.badge.s-partial,.badge.s-accrued{background:#f3ead7;color:var(--warn)}
+.badge.s-paid,.badge.s-approved{background:var(--okbg);color:var(--ok)}
+.badge.s-partial,.badge.s-accrued{background:var(--warnbg);color:var(--warn)}
 .link-btn{background:none;border:0;color:var(--teal);cursor:pointer;text-decoration:underline;font:inherit;padding:4px}
 .center{text-align:center}
 .hp{position:absolute;right:-9999px;height:0;overflow:hidden}
 .gsearch{position:relative;flex:0 1 300px}
 .gsearch input{width:100%}
-.gs-results{position:absolute;top:100%;right:0;left:0;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);z-index:60;max-height:360px;overflow-y:auto}
+.gs-results{position:absolute;top:100%;right:0;left:0;background:var(--card);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);z-index:60;max-height:360px;overflow-y:auto}
 .gs-item{display:block;width:100%;text-align:right;background:none;border:0;border-bottom:1px solid var(--line);padding:8px 12px;cursor:pointer;font:inherit}
-.gs-item:hover,.gs-item:focus{background:#eef6f8}
+.gs-item:hover,.gs-item:focus{background:var(--hl)}
 .ntf-btn{position:relative}
+html[data-theme="dark"]{color-scheme:dark;--navy:#79aee6; --navy-dark:#0a1119; --primary:#2c5a94; --teal:#4cb5c6; --bg:#0e1621; --card:#16212e; --text:#e4ebf3; --muted:#9aa9bc; --line:#2b3a4c; --line2:#3b4b5f;
+  --soft:#1f2c3b; --soft2:#1a2634; --hl:#173040; --okbg:#173a28; --warnbg:#3d3316; --dangerbg:#40201e; --danger:#f08a82; --ok:#5fd093; --warn:#e3ae52; --shadow:0 1px 3px rgba(0,0,0,.5)}
+html[data-theme="dark"] .login-screen{background:linear-gradient(160deg,#070d14,#10233a 55%,#16394a)}
+html[data-theme="dark"] .toast{background:#223246;color:#e4ebf3}
+input,select,textarea{color:var(--text)}
+input,select,textarea{background-color:var(--card)}
+.pw-wrap{position:relative;display:block}
+.pw-wrap input{width:100%;padding-inline-start:40px}
+.pw-eye{position:absolute;inset-inline-start:6px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;font-size:18px;color:var(--muted);padding:4px 8px;min-width:36px;min-height:36px}
+.help-btn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;border:1px solid var(--teal);background:var(--card);color:var(--teal);font-weight:700;cursor:pointer;margin-inline-start:6px;font-family:inherit;padding:0}
+.help-btn:hover{background:var(--teal);color:#fff}
+.form-help{margin-bottom:10px}
+.prose-sm{white-space:pre-wrap;line-height:1.9}
+.video-wrap{position:relative;margin-top:12px;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lk-row{display:flex;gap:6px;align-items:stretch;flex-wrap:wrap}
+.lk-row select{flex:1 1 140px;min-width:0}
+.lk-search{flex:0 1 120px;min-width:0}
+.lk-addrow{display:flex;gap:6px;margin-top:6px}
+.lk-addrow input{flex:1}
+.lk-add{min-width:38px;font-weight:700}
+.phone-wrap{display:flex;gap:6px}
+.phone-wrap select{flex:0 0 42%;min-width:0}
+.phone-wrap input{flex:1;min-width:0}
+.login-tools{display:flex;gap:8px;justify-content:center;margin-top:8px}
+.wa-btn{color:#25a244}
+.chat-log{max-height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.chat-msg{padding:8px 12px;border-radius:12px;max-width:88%;white-space:pre-wrap;line-height:1.7}
+.chat-msg.user{background:var(--primary);color:#fff;align-self:flex-start}
+.chat-msg.bot{background:var(--soft);align-self:flex-end}
+.chat-form{display:flex;gap:6px}
+.chat-form input{flex:1}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.tab-btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:6px 14px;cursor:pointer;font-family:inherit}
+.tab-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.big-balance{font-size:30px;font-weight:700;color:var(--navy)}
+.copy-box{display:flex;gap:6px;align-items:center}
+.copy-box input{flex:1;direction:ltr;text-align:left}
 .ntf-count{position:absolute;top:-2px;left:-2px;background:var(--danger);color:#fff;border-radius:999px;font-size:11px;min-width:18px;height:18px;line-height:18px;text-align:center;font-weight:700}
 .ntf-item{padding:10px 8px;border-bottom:1px solid var(--line);cursor:pointer}
-.ntf-item.unread{background:#eef6f8;font-weight:600}
-.cert{border:8px double var(--navy);padding:6px;background:#fff}
+.ntf-item.unread{background:var(--hl);font-weight:600}
+.cert{border:8px double var(--navy);padding:6px;background:var(--card)}
 .cert-in{border:2px solid var(--teal);padding:26px 18px;text-align:center}
 .cert h1{font-size:30px;margin:8px 0;color:var(--navy)} .cert h2{font-size:21px;margin:8px 0}
 .cert-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:20px;font-size:13px;text-align:right;flex-wrap:wrap}
 .cert-revoked{color:var(--danger);font-weight:700;font-size:20px;border:3px solid var(--danger);display:inline-block;padding:2px 14px;transform:rotate(-6deg);margin:6px}
-.row-late{background:#fdf0ef}
+.row-late{background:var(--dangerbg)}
 .receipt{border:1px dashed #9aa6b5;border-radius:8px;padding:16px}
 .opt{display:flex;gap:8px;align-items:center;padding:6px 0;font-weight:400}
 .opt input{width:auto}
 .q-card{margin-bottom:12px}
 .q-card h4{margin:0 0 8px;font-size:15px}
-.timer{font-weight:700;color:var(--navy);background:#eef2f7;border-radius:8px;padding:4px 12px}
-.timer.low{color:var(--danger);background:#fbeceb}
+.timer{font-weight:700;color:var(--navy);background:var(--soft);border-radius:8px;padding:4px 12px}
+.timer.low{color:var(--danger);background:var(--dangerbg)}
 .ok-txt{color:var(--ok)} .bad-txt{color:var(--danger)}
 .item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-bottom:22px}
 .item-card h3{font-size:16px;margin:0 0 4px}
@@ -149,7 +191,7 @@ input[type=checkbox]{width:auto}
 .lesson-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);flex-wrap:wrap}
 .lesson-row .grow{flex:1;min-width:180px}
 .tick{color:var(--ok);font-weight:700}
-.lesson-body{white-space:pre-wrap;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:12px;margin:10px 0}
+.lesson-body{white-space:pre-wrap;background:var(--soft2);border:1px solid var(--line);border-radius:8px;padding:12px;margin:10px 0}
 .link-list a{display:block;margin:4px 0}
 .subject-list{margin:8px 0 0;padding:0;list-style:none}
 .subject-list li{padding:8px 0;border-top:1px dashed var(--line)}
@@ -158,7 +200,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
 
 /* Modal */
 .modal-backdrop{position:fixed;inset:0;background:rgba(10,20,35,.5);display:flex;align-items:flex-start;justify-content:center;padding:30px 14px;overflow-y:auto;z-index:200}
-.modal{background:#fff;border-radius:12px;width:100%;max-width:520px;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+.modal{background:var(--card);border-radius:12px;width:100%;max-width:520px;box-shadow:0 18px 50px rgba(0,0,0,.3)}
 .modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line)}
 .modal-head h3{font-size:17px}
 .modal-body{padding:18px}
@@ -201,17 +243,20 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
       </div>
       <form id="login-form" novalidate>
         <div class="field">
-          <label for="login-id">اسم المستخدم أو البريد الإلكتروني</label>
-          <input id="login-id" name="identifier" type="text" autocomplete="username" maxlength="120" required>
+          <label for="login-id">اسم المستخدم أو البريد أو رقم الطالب</label>
+          <input id="login-id" name="identifier" type="text" autocomplete="username" maxlength="120" required aria-describedby="login-id-hint">
+          <div class="hint" id="login-id-hint">يمكن أن يكون أرقامًا أو أحرفًا أو الاثنين معًا (مثل: ahmed12 أو 2026-AB12CD).</div>
         </div>
         <div class="field">
           <label for="login-pw">كلمة المرور</label>
-          <input id="login-pw" name="password" type="password" autocomplete="current-password" maxlength="200" required>
+          <div class="pw-wrap"><input id="login-pw" name="password" type="password" autocomplete="current-password" maxlength="200" required aria-describedby="login-pw-hint"><button type="button" class="pw-eye" data-eye aria-label="إظهار كلمة المرور">&#128065;</button></div>
+          <div class="hint" id="login-pw-hint">اضغط على العين لإظهار كلمة المرور والتأكد منها.</div>
         </div>
         <div id="login-error" class="form-error" role="alert" hidden></div>
         <button type="submit" id="login-btn" class="btn primary block">تسجيل الدخول</button>
       </form>
-      <p class="center"><button type="button" id="forgot-link" class="link-btn">نسيت كلمة المرور؟</button></p>
+      <p class="center"><button type="button" id="forgot-link" class="link-btn">نسيت كلمة المرور؟</button> <button type="button" class="help-btn" data-help="login" aria-label="شرح تسجيل الدخول">؟</button></p>
+      <div id="login-tools" class="login-tools"><button type="button" class="btn sm" id="login-theme" aria-label="تبديل الوضع الليلي والنهاري">&#9788;/&#9790;</button><a id="login-wa" class="btn sm" target="_blank" rel="noopener" hidden>واتساب</a></div>
       <form id="forgot-form" novalidate hidden>
         <div class="field">
           <label for="forgot-id">اسم المستخدم أو البريد الإلكتروني</label>
@@ -229,8 +274,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     <div class="login-card">
       <div class="brand"><div class="brand-mark" aria-hidden="true">SCI</div><h1>تعيين كلمة مرور جديدة</h1></div>
       <form id="reset-form" novalidate>
-        <div class="field"><label for="rs-pw">كلمة المرور الجديدة (10 أحرف فأكثر مع أرقام)</label><input id="rs-pw" type="password" maxlength="200" autocomplete="new-password"></div>
-        <div class="field"><label for="rs-pw2">تأكيد كلمة المرور</label><input id="rs-pw2" type="password" maxlength="200" autocomplete="new-password"></div>
+        <div class="field"><label for="rs-pw">كلمة المرور الجديدة (10 أحرف فأكثر مع أرقام)</label><div class="pw-wrap"><input id="rs-pw" type="password" maxlength="200" autocomplete="new-password"><button type="button" class="pw-eye" data-eye aria-label="إظهار كلمة المرور">&#128065;</button></div></div>
+        <div class="field"><label for="rs-pw2">تأكيد كلمة المرور</label><div class="pw-wrap"><input id="rs-pw2" type="password" maxlength="200" autocomplete="new-password"><button type="button" class="pw-eye" data-eye aria-label="إظهار كلمة المرور">&#128065;</button></div></div>
         <div id="reset-msg" class="form-error" role="alert" hidden></div>
         <button type="submit" class="btn primary block">حفظ كلمة المرور</button>
       </form>
@@ -256,7 +301,12 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
           <div id="gs-results" class="gs-results" role="listbox" hidden></div>
         </div>
         <div class="spacer"></div>
+        <button type="button" id="refresh-btn" class="icon-btn" aria-label="تحديث الصفحة" title="تحديث">&#8635;</button>
+        <button type="button" id="theme-btn" class="icon-btn" aria-label="الوضع الليلي أو النهاري" title="الوضع الليلي/النهاري">&#9790;</button>
+        <button type="button" id="wa-btn" class="icon-btn wa-btn" aria-label="تواصل معنا عبر واتساب" title="تواصل معنا عبر واتساب" hidden>&#9742;</button>
+        <button type="button" id="ai-btn" class="icon-btn" aria-label="المساعد الذكي" title="المساعد الذكي">&#10024;</button>
         <button type="button" id="ntf-btn" class="icon-btn ntf-btn" aria-label="الإشعارات">&#128276;<span id="ntf-count" class="ntf-count" hidden>0</span></button>
+        <button type="button" id="acct-btn" class="icon-btn" aria-label="حسابي" title="حسابي">&#9786;</button>
         <div class="user-chip">
           <span id="user-name" class="user-name"></span>
           <span id="user-role" class="user-role"></span>
@@ -268,13 +318,17 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   </div>
 
   <div id="modal-root"></div>
-  <script src="config.js"></script>
   <script>
+window.SCI_CONFIG = {
+    API_URL: "https://script.google.com/macros/s/AKfycbwRfbjf66pPUYCU-U3wVgghglYCsPfkcpFgBGfZN1VA8q4TE0oU3kyc-V4yl4mr--CKnA/exec"
+};
+</script>
   (function () {
     var q = new URLSearchParams(location.search), p = q.get('page') || '', t = (q.get('token') || '').toLowerCase();
-    var okT = /^[a-f0-9]{64}$/.test(t);
-    if (p === 'public' || p === 'verify') { window.SCI_BOOT = { page: 'none' }; location.replace('site.html' + location.search); return; }
-    window.SCI_BOOT = { page: (p === 'reset' && okT) ? 'reset' : 'app', token: okT ? t : '' };
+    var okT = /^[a-f0-9]{64}$/.test(t), o = (q.get('org') || '').toLowerCase();
+    if (!/^[a-z0-9\-]{0,31}$/.test(o)) o = '';
+    if (p === 'public' || p === 'verify' || p === 'course' || p === 'diploma') { window.SCI_BOOT = { page: 'none' }; location.replace('site.html' + location.search); return; }
+    window.SCI_BOOT = { page: (p === 'reset' && okT) ? 'reset' : 'app', token: okT ? t : '', org: o };
   })();
   </script>
   <script>
@@ -284,7 +338,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   /* ===================== ثوابت وتسميات ===================== */
   var ROLE_LABELS = {
     system_admin: 'مدير النظام', org_admin: 'مدير المؤسسة', admin_staff: 'موظف إداري',
-    registrar: 'موظف تسجيل', finance: 'موظف مالي', teacher: 'مدرب', student: 'طالب'
+    registrar: 'موظف تسجيل', finance: 'موظف مالي', marketer: 'مسوق', teacher: 'مدرب', student: 'طالب'
   };
   var STAFF_ROLES = ['system_admin', 'org_admin', 'admin_staff', 'registrar', 'finance'];
   var USER_STATUS = { active: 'نشط', disabled: 'معطّل' };
@@ -292,7 +346,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   var TEACHER_STATUS = { active: 'نشط', inactive: 'غير نشط' };
   var GENDER = { male: 'ذكر', female: 'أنثى' };
 
-  var state = { token: null, user: null, perms: {}, assignable: [], canSetShare: false, view: null, pendingSearch: '' };
+  var state = { token: null, user: null, perms: {}, assignable: [], canSetShare: false, view: null, pendingSearch: '', lookups: {}, lookupsLoaded: false, features: {}, org: {}, affiliate: null };
   var mem = {}, pending = 0, modalSeq = 0;
 
   /* ===================== أدوات عامة ===================== */
@@ -308,6 +362,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   function optionsFrom(map, keys) {
     return (keys || Object.keys(map)).map(function (k) { return { value: k, label: map[k] || k }; });
   }
+  function orgCode() { return String((window.SCI_BOOT && window.SCI_BOOT.org) || window.SCI_ORG || '').toLowerCase().replace(/[^a-z0-9\-]/g, '').substring(0, 31); }
+  var TOKEN_KEY = 'sci_token' + (orgCode() ? ':' + orgCode() : '');
   var store = {
     get: function (k) { try { return window.sessionStorage.getItem(k); } catch (e) { return mem[k] || null; } },
     set: function (k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) { mem[k] = v; } },
@@ -336,6 +392,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
    *     فلا تتأثر الجلسة بتعدد حسابات Google في المتصفح.
    */
   function serverCall(req, isPublic) {
+    req.org = orgCode();
     return new Promise(function (resolve, reject) {
       if (window.google && window.google.script && window.google.script.run) {
         var runner = window.google.script.run.withSuccessHandler(resolve).withFailureHandler(function () { reject({ netFail: true }); });
@@ -343,8 +400,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
         return;
       }
       var url = window.SCI_API_URL;
-      if (!url || /PUT_YOUR/.test(url)) { reject({ netFail: true, noUrl: true }); return; }
-      var body = isPublic ? { public: true, action: req.action, payload: req.payload } : req;
+      if (!url || /https://script.google.com/macros/s/AKfycbwRfbjf66pPUYCU-U3wVgghglYCsPfkcpFgBGfZN1VA8q4TE0oU3kyc-V4yl4mr--CKnA/exec/.test(url)) { reject({ netFail: true, noUrl: true }); return; }
+      var body = isPublic ? { public: true, action: req.action, payload: req.payload, org: req.org } : req;
       fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body),
                    credentials: 'omit', redirect: 'follow', cache: 'no-store' })
         .then(function (r) { return r.text(); })
@@ -451,39 +508,125 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     });
   }
 
-  function fieldHtml(f, v) {
+  /* ---------- القوائم المرجعية والهاتف ---------- */
+  function loadLookups() {
+    if (state.lookupsLoaded) return Promise.resolve(state.lookups);
+    return api('lookups.byType', {}).then(function (d) { state.lookups = d || {}; state.lookupsLoaded = true; return state.lookups; })
+      .catch(function () { state.lookups = state.lookups || {}; state.lookupsLoaded = true; return state.lookups; });
+  }
+  function lookupItems(type, parent) {
+    var all = (state.lookups && state.lookups[type]) || [];
+    return parent === null || parent === undefined ? all : all.filter(function (i) { return i.parent === parent; });
+  }
+  function lookupLabel(type, key) {
+    var f = lookupItems(type, null).filter(function (i) { return i.key === key; })[0];
+    return f ? f.label : key;
+  }
+  function lkOptions(items, selected, placeholder) {
+    return '<option value="">' + esc(placeholder) + '</option>' + items.map(function (i) {
+      return '<option value="' + esc(i.key) + '"' + (String(i.key) === String(selected) ? ' selected' : '') + '>' + esc(i.label) + '</option>';
+    }).join('');
+  }
+  function dialList() {
+    var seen = {}, out = [];
+    lookupItems('countries', null).forEach(function (c) {
+      var d = c.extra && c.extra.dial;
+      if (d && !seen[d]) { seen[d] = true; out.push({ dial: d, label: c.label, len: c.extra.phone_len || 0 }); }
+    });
+    return out;
+  }
+  function splitPhone(val) {
+    var s = String(val || '').replace(/\s/g, ''), list = dialList();
+    if (!list.length) return { dial: '', num: s };
+    if (s.charAt(0) === '+') {
+      var best = null;
+      list.forEach(function (c) { if (s.indexOf(c.dial) === 0 && (!best || c.dial.length > best.dial.length)) best = c; });
+      if (best) return { dial: best.dial, num: s.slice(best.dial.length) };
+    }
+    return { dial: list[0].dial, num: s.replace(/^\+/, '') };
+  }
+  function phoneHint(dial) {
+    var c = dialList().filter(function (x) { return x.dial === dial; })[0];
+    return 'اكتب الرقم دون الصفر الأول' + (c && c.len ? ' (عدد أرقام الهاتف المعتاد في ' + c.label + ': ' + c.len + ')' : '') + '.';
+  }
+
+  /* ---------- مولّد الحقول ---------- */
+  function fieldHtml(f, v, all) {
     var id = 'f_' + f.key;
     var val = (v === undefined || v === null) ? (f.def !== undefined ? f.def : '') : v;
-    var attrs = ' id="' + id + '" name="' + esc(f.key) + '"' + (f.type === 'checkbox' ? '' : ' aria-describedby="e_' + esc(f.key) + '"') + (f.required ? ' aria-required="true"' : '') +
+    var desc = 'e_' + esc(f.key) + (f.help ? ' h_' + esc(f.key) : '');
+    var attrs = ' id="' + id + '" name="' + esc(f.key) + '"' + (f.type === 'checkbox' ? '' : ' aria-describedby="' + desc + '"') + (f.required ? ' aria-required="true"' : '') +
       (f.autocomplete ? ' autocomplete="' + esc(f.autocomplete) + '"' : '') + (f.maxlength ? ' maxlength="' + f.maxlength + '"' : '');
+    var hint = f.help ? '<div class="hint" id="h_' + esc(f.key) + '">' + esc(f.help) + '</div>' : '';
     if (f.type === 'checkbox') {
-      return '<div class="field field-check" data-key="' + esc(f.key) + '"><label><input type="checkbox"' + attrs + (val ? ' checked' : '') + '> ' + esc(f.label) + '</label></div>';
+      return '<div class="field field-check" data-key="' + esc(f.key) + '"><label><input type="checkbox"' + attrs + (val ? ' checked' : '') + '> ' + esc(f.label) + '</label>' + hint + '</div>';
     }
     var inner;
     if (f.type === 'select') {
       inner = '<select' + attrs + '>' + (f.options || []).map(function (o) {
         return '<option value="' + esc(o.value) + '"' + (String(o.value) === String(val) ? ' selected' : '') + '>' + esc(o.label) + '</option>';
       }).join('') + '</select>';
+    } else if (f.type === 'lookup') {
+      var pv = f.parentKey ? ((all && all[f.parentKey]) || '') : null;
+      var items = lookupItems(f.lookup, pv), canAdd = f.allowAdd !== false && can('lookups', 'c');
+      inner = '<div class="lk-row"><input type="search" class="lk-search" data-lk-search="' + esc(f.key) + '" placeholder="بحث…" aria-label="بحث"' + (items.length > 8 ? '' : ' hidden') + '>' +
+        '<select' + attrs + '>' + lkOptions(items, val, f.parentKey && !pv ? 'اختر العنصر الأعلى أولًا' : '— اختر —') + '</select>' +
+        (canAdd ? '<button type="button" class="btn sm lk-add" data-lk-add="' + esc(f.key) + '" title="إضافة عنصر جديد" aria-label="إضافة عنصر جديد إلى القائمة">+</button>' : '') + '</div>' +
+        (canAdd ? '<div class="lk-addrow" data-lk-row="' + esc(f.key) + '" hidden><input type="text" maxlength="100" placeholder="الاسم الجديد" aria-label="الاسم الجديد"><button type="button" class="btn sm primary" data-lk-save="' + esc(f.key) + '">إضافة</button></div>' : '');
+    } else if (f.type === 'phone') {
+      var sp = splitPhone(val), dials = dialList();
+      if (!dials.length) inner = '<input type="tel" inputmode="numeric" dir="ltr"' + attrs + ' value="' + esc(val) + '">';
+      else inner = '<div class="phone-wrap"><select name="' + esc(f.key) + '__dial" id="' + id + '__dial" aria-label="مفتاح الدولة" dir="ltr">' + dials.map(function (d) {
+        return '<option value="' + esc(d.dial) + '"' + (d.dial === sp.dial ? ' selected' : '') + '>' + esc(d.dial + ' ' + d.label) + '</option>';
+      }).join('') + '</select><input type="tel" inputmode="numeric" dir="ltr"' + attrs + ' value="' + esc(sp.num) + '"></div>' +
+        '<div class="hint" data-phone-hint="' + esc(f.key) + '">' + esc(phoneHint(sp.dial)) + '</div>';
     } else if (f.type === 'multiselect') {
       var picked = Array.isArray(val) ? val.map(String) : [];
       inner = '<select multiple size="5"' + attrs + '>' + (f.options || []).map(function (o) {
         return '<option value="' + esc(o.value) + '"' + (picked.indexOf(String(o.value)) >= 0 ? ' selected' : '') + '>' + esc(o.label) + '</option>';
       }).join('') + '</select>';
     } else if (f.type === 'textarea') {
-      inner = '<textarea' + attrs + ' rows="3">' + esc(val) + '</textarea>';
+      inner = '<textarea' + attrs + ' rows="' + (f.rows || 3) + '">' + esc(val) + '</textarea>';
+    } else if (f.type === 'password') {
+      inner = '<div class="pw-wrap"><input type="password"' + attrs + ' value="' + esc(val) + '"><button type="button" class="pw-eye" data-eye aria-label="إظهار كلمة المرور">&#128065;</button></div>';
     } else {
       inner = '<input type="' + esc(f.type || 'text') + '"' + attrs + ' value="' + esc(val) + '">';
     }
     var label = esc(f.label) + (f.required ? ' <span class="req" aria-hidden="true">*</span>' : '');
-    return '<div class="field" data-key="' + esc(f.key) + '"><label for="' + id + '">' + label + '</label>' + inner + '<div class="ferr" role="alert" id="e_' + esc(f.key) + '"></div></div>';
+    return '<div class="field" data-key="' + esc(f.key) + '"><label for="' + id + '">' + label + '</label>' + inner + hint + '<div class="ferr" role="alert" id="e_' + esc(f.key) + '"></div></div>';
   }
 
-  /** cfg: {title, fields, values, submitLabel, onSubmit(values)->Promise, onDone()} */
+  /* ---------- نافذة التعليمات (نص + فيديو يوتيوب) ---------- */
+  function helpFail(e) { toast((e && e.message) || 'تعذر إتمام العملية.', 'error'); }
+  function showHelp(topic) {
+    api('help.show', { topic: topic }).then(function (d) {
+      var node = document.createElement('div'), editable = can('help_topics', 'u') || can('help_topics', 'c');
+      node.innerHTML = (d.body ? '<div class="prose-sm">' + esc(d.body) + '</div>' : '<p class="hint">لا يوجد شرح لهذا الموضوع بعد.</p>') +
+        (d.video_embed && d.video_embed.indexOf('https://www.youtube-nocookie.com/embed/') === 0 ? '<div class="video-wrap"><iframe src="' + esc(d.video_embed) + '" title="شرح بالفيديو" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' : '') +
+        (editable ? '<div class="form-actions"><button type="button" class="btn" data-edit>تعديل الشرح</button></div>' : '');
+      var m = openModal({ title: d.title || 'مساعدة', node: node, wide: !!d.video_embed });
+      var eb = node.querySelector('[data-edit]');
+      if (eb) eb.addEventListener('click', function () {
+        m.close();
+        openForm({
+          title: 'تعديل الشرح', values: { title: d.title || topic, body: d.body, video_url: d.video_url },
+          fields: [{ key: 'title', label: 'العنوان', required: true, maxlength: 120 }, { key: 'body', label: 'الشرح', type: 'textarea', rows: 8, maxlength: 5000 },
+                   { key: 'video_url', label: 'رابط فيديو يوتيوب (اختياري)', maxlength: 300, help: 'مثل https://youtu.be/xxxxxxxxxxx — يُعرض داخل الصفحة.' }],
+          onSubmit: function (v) { v.topic = topic; return api('help.save', v); }, onDone: function () { toast('تم الحفظ.', 'ok'); showHelp(topic); }
+        });
+      });
+    }).catch(helpFail);
+  }
+  function helpBtn(topic) { return '<button type="button" class="help-btn" data-help="' + esc(topic) + '" aria-label="شرح وتعليمات">؟</button>'; }
+
   function openForm(cfg) {
+    var needs = cfg.fields.some(function (f) { return f.type === 'lookup' || f.type === 'phone'; });
+    if (needs && !state.lookupsLoaded) { loadLookups().then(function () { openForm(cfg); }); return; }
     var values = cfg.values || {};
     var form = document.createElement('form');
     form.noValidate = true;
-    form.innerHTML = cfg.fields.map(function (f) { return fieldHtml(f, values[f.key]); }).join('') +
+    form.innerHTML = (cfg.help ? '<div class="form-help">' + helpBtn(cfg.help) + ' <span class="hint">شرح هذا النموذج</span></div>' : '') +
+      cfg.fields.map(function (f) { return fieldHtml(f, values[f.key], values); }).join('') +
       '<div class="form-error" role="alert" hidden></div>' +
       '<div class="form-actions"><button type="submit" class="btn primary"></button><button type="button" class="btn" data-close>إلغاء</button></div>';
     $('button[type=submit]', form).textContent = cfg.submitLabel || 'حفظ';
@@ -502,6 +645,55 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     form.addEventListener('change', refresh);
     refresh();
 
+    form.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target : null;
+      var h = t && t.closest('[data-help]');
+      if (h) { showHelp(h.getAttribute('data-help')); return; }
+      var eye = t && t.closest('[data-eye]');
+      if (eye) { var pi = eye.parentNode.querySelector('input'); if (pi) pi.type = pi.type === 'password' ? 'text' : 'password'; }
+    });
+
+    function fieldLabel(key) { var x = cfg.fields.filter(function (f) { return f.key === key; })[0]; return x ? x.label : ''; }
+    cfg.fields.forEach(function (f) {
+      var w = wrap(f.key);
+      if (f.type === 'lookup') {
+        var sel = form.elements[f.key], search = w.querySelector('[data-lk-search]'), addBtn = w.querySelector('[data-lk-add]'), row = w.querySelector('[data-lk-row]');
+        var pick = function () { return f.parentKey ? ((form.elements[f.parentKey] || {}).value || '') : null; };
+        var rebuild = function (keep) {
+          var pv = pick(), items = lookupItems(f.lookup, pv), total = items.length, q = search ? String(search.value || '').trim().toLowerCase() : '';
+          if (q) items = items.filter(function (i) { return (i.label + ' ' + (i.label_en || '')).toLowerCase().indexOf(q) >= 0; });
+          sel.innerHTML = lkOptions(items, keep, f.parentKey && !pv ? 'اختر ' + fieldLabel(f.parentKey) + ' أولًا' : '— اختر —');
+          if (search) search.hidden = total <= 8;
+        };
+        if (search) search.addEventListener('input', function () { rebuild(sel.value); });
+        if (f.parentKey && form.elements[f.parentKey]) form.elements[f.parentKey].addEventListener('change', function () { if (search) search.value = ''; rebuild(''); });
+        if (addBtn) addBtn.addEventListener('click', function () { row.hidden = !row.hidden; if (!row.hidden) row.querySelector('input').focus(); });
+        var saveBtn = w.querySelector('[data-lk-save]');
+        if (saveBtn) saveBtn.addEventListener('click', function () {
+          var inp = row.querySelector('input'), name = String(inp.value || '').trim(), pv = pick();
+          if (name.length < 2) { toast('اكتب الاسم الجديد (حرفان على الأقل).', 'error'); return; }
+          if (f.parentKey && !pv) { toast('اختر ' + fieldLabel(f.parentKey) + ' أولًا.', 'error'); return; }
+          api('lookups.add', { type: f.lookup, label_ar: name, parent: f.parentKey ? pv : '' }).then(function (d) {
+            var list = state.lookups[f.lookup] = state.lookups[f.lookup] || [];
+            if (!list.some(function (i) { return i.key === d.key; })) list.push({ key: d.key, label: d.label, label_en: '', parent: d.parent || '', extra: {} });
+            if (search) search.value = '';
+            rebuild(d.key); inp.value = ''; row.hidden = true;
+            toast(d.existing ? 'العنصر موجود مسبقًا وتم اختياره.' : 'تمت إضافة العنصر إلى القائمة.', 'ok');
+          }).catch(helpFail);
+        });
+      }
+      if (f.type === 'phone') {
+        var dsel = form.elements[f.key + '__dial'], hintEl = w.querySelector('[data-phone-hint]');
+        if (dsel) {
+          dsel.addEventListener('change', function () { if (hintEl) hintEl.textContent = phoneHint(dsel.value); });
+          if (f.countryKey && form.elements[f.countryKey]) form.elements[f.countryKey].addEventListener('change', function () {
+            var c = lookupItems('countries', null).filter(function (i) { return i.key === form.elements[f.countryKey].value; })[0];
+            if (c && c.extra && c.extra.dial) { dsel.value = c.extra.dial; if (hintEl) hintEl.textContent = phoneHint(c.extra.dial); }
+          });
+        }
+      }
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (busy) return;
@@ -517,7 +709,12 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
         var v;
         if (f.type === 'checkbox') v = inp.checked;
         else if (f.type === 'multiselect') v = Array.prototype.filter.call(inp.options || [], function (o) { return o.selected; }).map(function (o) { return o.value; });
-        else v = f.type === 'password' ? inp.value : inp.value.trim();
+        else if (f.type === 'phone') {
+          var ds = form.elements[f.key + '__dial'], digits = String(inp.value || '').replace(/\D/g, '').replace(/^0+/, '');
+          v = ds ? (digits ? String(ds.value) + digits : '') : String(inp.value || '').trim();
+          if (ds && digits && digits.length < 5) { if (fe) fe.textContent = 'رقم الهاتف قصير جدًا.'; if (inp.setAttribute) inp.setAttribute('aria-invalid', 'true'); ok = false; if (!firstBad) firstBad = inp; }
+        }
+        else v = f.type === 'password' ? inp.value : String(inp.value || '').trim();
         if (f.required && (v === '' || v === false || (Array.isArray(v) && !v.length))) {
           if (fe) fe.textContent = 'هذا الحقل مطلوب.';
           if (inp.setAttribute) inp.setAttribute('aria-invalid', 'true');
@@ -538,6 +735,47 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
         busy = false; btn.disabled = false;
       });
     });
+  }
+
+  /* ---------- حقول مخصصة (من تعريفات المسؤول) ---------- */
+  function dynField(d) {
+    var f = { key: 'x_' + d.key, label: d.label, required: d.required, help: d.help };
+    var opts = [{ value: '', label: '— اختر —' }].concat((d.options || []).map(function (o) { return { value: o, label: o }; }));
+    if (d.type === 'lookup') { f.type = 'lookup'; f.lookup = d.lookup_type; f.parentKey = d.depends_on ? 'x_' + d.depends_on : ''; }
+    else if (d.type === 'select') { f.type = 'select'; f.options = opts; }
+    else if (d.type === 'multiselect') { f.type = 'multiselect'; f.options = opts.slice(1); }
+    else if (d.type === 'textarea' || d.type === 'date' || d.type === 'checkbox') f.type = d.type;
+    else if (d.type === 'number' || d.type === 'percent' || d.type === 'money') f.type = 'number';
+    else { f.type = 'text'; f.maxlength = 300; }
+    return f;
+  }
+  function dynDisplay(d, v) {
+    if (v === undefined || v === null || v === '') return '';
+    if (d.type === 'lookup') return lookupLabel(d.lookup_type, v);
+    if (d.type === 'multiselect') return (Array.isArray(v) ? v : []).join('، ');
+    if (d.type === 'checkbox') return v ? 'نعم' : 'لا';
+    return String(v);
+  }
+  /** يحمّل القوائم وتعريفات الحقول ثم يستدعي cb(حقولًا، قيمًا ابتدائية، دالة تجميع extra، تعريفات) */
+  function withDyn(entity, extra, scope, cb) {
+    Promise.all([loadLookups(), api('fields.defs', { entity: entity })]).then(function (res) {
+      var defs = res[1] || [];
+      if (scope === 'self') defs = defs.filter(function (d) { return d.self_editable; });
+      var values = {};
+      defs.forEach(function (d) { if (extra && extra[d.key] !== undefined) values['x_' + d.key] = extra[d.key]; });
+      cb(defs.map(dynField), values, function pack(v) {
+        var ex = {};
+        Object.keys(v).forEach(function (k) { if (k.indexOf('x_') === 0) { ex[k.slice(2)] = v[k]; delete v[k]; } });
+        v.extra = ex;
+        return v;
+      }, defs);
+    }).catch(helpFail);
+  }
+  function extraRows(entity, extra) {
+    return Promise.all([loadLookups(), api('fields.defs', { entity: entity })]).then(function (res) {
+      return (res[1] || []).filter(function (d) { return extra && extra[d.key] !== undefined && extra[d.key] !== ''; })
+        .map(function (d) { return [d.label, dynDisplay(d, extra[d.key])]; });
+    }).catch(function () { return []; });
   }
 
   function detailsModal(title, pairs) {
@@ -688,7 +926,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
             { key: 'full_name', label: 'الاسم الكامل', required: true, maxlength: 100 },
             { key: 'username', label: 'اسم المستخدم', required: true, maxlength: 40, autocomplete: 'off' },
             { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
-            { key: 'phone', label: 'الهاتف', type: 'tel', maxlength: 20 },
+            { key: 'phone', label: 'الهاتف', type: 'phone', maxlength: 20 },
             { key: 'role', label: 'الدور', type: 'select', required: true, options: optionsFrom(ROLE_LABELS, roles) },
             { key: 'password', label: 'كلمة المرور (10 أحرف فأكثر مع أرقام)', type: 'password', required: true, autocomplete: 'new-password' }
           ],
@@ -707,7 +945,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
             var f = [
               { key: 'full_name', label: 'الاسم الكامل', required: true, maxlength: 100 },
               { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
-              { key: 'phone', label: 'الهاتف', type: 'tel', maxlength: 20 }
+              { key: 'phone', label: 'الهاتف', type: 'phone', maxlength: 20 }
             ];
             if (r._manageable && STAFF_ROLES.indexOf(r.role) >= 0) {
               var roles = state.assignable.filter(function (x) { return STAFF_ROLES.indexOf(x) >= 0; });
@@ -747,6 +985,9 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
           }
         });
       }
+      if (can('documents', 'r')) acts.push({ label: 'المستندات', run: function (r) { if (window.SCI_UI.ext.openDocuments) window.SCI_UI.ext.openDocuments('student', r); } });
+      if (can('guardians', 'r')) acts.push({ label: 'أولياء الأمور', run: function (r) { if (window.SCI_UI.ext.openGuardians) window.SCI_UI.ext.openGuardians(r); } });
+      if (can('referrals', 'c')) acts.push({ label: 'المسوق', run: function (r) { if (window.SCI_UI.ext.assignReferrer) window.SCI_UI.ext.assignReferrer(r); } });
       return acts;
     }
   });
@@ -755,7 +996,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   function studentFields(isNew) {
     var f = [
       { key: 'full_name', label: 'الاسم الكامل', required: true, maxlength: 100 },
-      { key: 'phone', label: 'الهاتف', type: 'tel', maxlength: 20 },
+      { key: 'phone', label: 'الهاتف', type: 'phone', maxlength: 20 },
       { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
       { key: 'national_id', label: 'رقم الهوية', maxlength: 30 },
       { key: 'birth_date', label: 'تاريخ الميلاد', type: 'date' },
@@ -780,10 +1021,15 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     headerActions: function () { return can('students', 'c') ? [{
       label: '+ طالب جديد',
       run: function (reload) {
-        openForm({
-          title: 'طالب جديد', submitLabel: 'إضافة', fields: studentFields(true),
-          onSubmit: function (v) { return api('students.create', v); },
-          onDone: function () { toast('تمت إضافة الطالب.', 'ok'); reload(); }
+        withDyn('students', null, '', function (dyn, vals, pack, defs) {
+          var base = studentFields(false);
+          if (defs.some(function (d) { return d.key === 'residence_country'; })) base.forEach(function (f) { if (f.key === 'phone') f.countryKey = 'x_residence_country'; });
+          openForm({
+            title: 'طالب جديد', submitLabel: 'إضافة', help: 'register', values: vals,
+            fields: base.concat(dyn, [{ key: 'ref_code', label: 'رمز المسوق (اختياري)', maxlength: 12, help: 'إن كان الطالب جاء عن طريق مسوق فاكتب رمز إحالته ليرتبط به.' }], accountFields()),
+            onSubmit: function (v) { return api('students.create', pack(v)); },
+            onDone: function () { toast('تمت إضافة الطالب.', 'ok'); reload(); }
+          });
         });
       }
     }] : []; },
@@ -791,23 +1037,31 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
       var acts = [{
         label: 'عرض',
         run: function (r) {
-          detailsModal('بيانات الطالب', [
-            ['رقم الطالب', r.student_no], ['الاسم', r.full_name], ['الهاتف', r.phone], ['البريد', r.email],
-            ['رقم الهوية', r.national_id], ['تاريخ الميلاد', r.birth_date], ['الجنس', GENDER[r.gender]],
-            ['العنوان', r.address], ['الحالة', STUDENT_STATUS[r.status]], ['حساب دخول', r.user_id ? 'نعم' : 'لا'],
-            ['ملاحظات', r.notes]
-          ]);
+          api('students.get', { id: r.id }).then(function (s) {
+            return extraRows('students', s.extra_obj).then(function (more) {
+              detailsModal('بيانات الطالب', [
+                ['رقم الطالب', r.student_no], ['الاسم', r.full_name], ['الهاتف', r.phone], ['البريد', r.email],
+                ['رقم الهوية', r.national_id], ['تاريخ الميلاد', r.birth_date], ['الجنس', GENDER[r.gender]],
+                ['العنوان', r.address], ['الحالة', STUDENT_STATUS[r.status]], ['حساب دخول', r.user_id ? 'نعم' : 'لا'],
+                ['ملاحظات', r.notes]
+              ].concat(more, s.referrer ? [['المسوق', s.referrer.name + ' (' + s.referrer.code + ')']] : []));
+            });
+          }).catch(helpFail);
         }
       }];
       if (can('students', 'u')) {
         acts.push({
           label: 'تعديل',
           run: function (r, reload) {
-            openForm({
-              title: 'تعديل بيانات طالب', values: r, fields: studentFields(false),
-              onSubmit: function (v) { v.id = r.id; return api('students.update', v); },
-              onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
-            });
+            api('students.get', { id: r.id }).then(function (s) {
+              withDyn('students', s.extra_obj, '', function (dyn, vals, pack) {
+                openForm({
+                  title: 'تعديل بيانات طالب', values: Object.assign({}, r, vals), fields: studentFields(false).concat(dyn),
+                  onSubmit: function (v) { pack(v); v.id = r.id; return api('students.update', v); },
+                  onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+                });
+              });
+            }).catch(helpFail);
           }
         });
         acts.push({
@@ -827,11 +1081,12 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   });
 
   /* ===================== المدربون ===================== */
+  function SCI_extraOf(rec) { try { return rec && rec.extra ? JSON.parse(rec.extra) : {}; } catch (e) { return {}; } }
   function teacherFields(isNew) {
     var f = [
       { key: 'full_name', label: 'الاسم الكامل', required: true, maxlength: 100 },
       { key: 'specialty', label: 'التخصص', maxlength: 100 },
-      { key: 'phone', label: 'الهاتف', type: 'tel', maxlength: 20 },
+      { key: 'phone', label: 'الهاتف', type: 'phone', maxlength: 20 },
       { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
       { key: 'bio', label: 'نبذة', type: 'textarea', maxlength: 1000 }
     ];
@@ -853,10 +1108,12 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     headerActions: function () { return can('teachers', 'c') ? [{
       label: '+ مدرب جديد',
       run: function (reload) {
+        withDyn('teachers', null, '', function (dyn, vals, pack) {
         openForm({
-          title: 'مدرب جديد', submitLabel: 'إضافة', fields: teacherFields(true),
-          onSubmit: function (v) { return api('teachers.create', v); },
+          title: 'مدرب جديد', submitLabel: 'إضافة', values: vals, fields: teacherFields(false).concat(dyn, (state.canSetShare ? [{ key: 'revenue_share', label: 'نسبة المدرب من الإيرادات (%)', type: 'number', def: 0 }] : []), accountFields()),
+          onSubmit: function (v) { return api('teachers.create', pack(v)); },
           onDone: function () { toast('تمت إضافة المدرب.', 'ok'); reload(); }
+        });
         });
       }
     }] : []; },
@@ -870,15 +1127,20 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
           ]);
         }
       }];
+      if (['system_admin', 'org_admin'].indexOf(state.user.role) >= 0 && can('documents', 'r')) acts.push({ label: 'المستندات', run: function (r) { if (window.SCI_UI.ext.openDocuments) window.SCI_UI.ext.openDocuments('teacher', r); } });
       if (can('teachers', 'u')) {
         acts.push({
           label: 'تعديل',
           run: function (r, reload) {
-            openForm({
-              title: 'تعديل بيانات مدرب', values: r, fields: teacherFields(false),
-              onSubmit: function (v) { v.id = r.id; return api('teachers.update', v); },
-              onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
-            });
+            api('teachers.get', { id: r.id }).then(function (t) {
+              withDyn('teachers', SCI_extraOf(t), '', function (dyn, vals, pack) {
+                openForm({
+                  title: 'تعديل بيانات مدرب', values: Object.assign({}, r, vals), fields: teacherFields(false).concat(dyn),
+                  onSubmit: function (v) { pack(v); v.id = r.id; return api('teachers.update', v); },
+                  onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+                });
+              });
+            }).catch(helpFail);
           }
         });
         acts.push({
@@ -977,18 +1239,29 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
         var eb = document.createElement('button');
         eb.type = 'button'; eb.className = 'btn'; eb.textContent = 'تعديل بياناتي';
         eb.addEventListener('click', function () {
-          openForm({
-            title: 'تعديل بياناتي', values: { phone: d.record.phone, email: d.record.email, address: d.record.address },
-            fields: [
-              { key: 'phone', label: 'الهاتف', type: 'tel', maxlength: 20 }, { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
-              { key: 'address', label: 'العنوان', maxlength: 200 }
-            ],
-            onSubmit: function (v) { return api('portal.updateProfile', v); },
-            onDone: function () { toast('تم حفظ بياناتك.', 'ok'); navigate('profile'); }
+          withDyn('students', d.extra, 'self', function (dyn, vals, pack) {
+            openForm({
+              title: 'تعديل بياناتي', help: 'profile', values: Object.assign({ phone: d.record.phone, email: d.record.email, address: d.record.address }, vals),
+              fields: [
+                { key: 'phone', label: 'الهاتف', type: 'phone', maxlength: 20, countryKey: 'x_residence_country' }, { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
+                { key: 'address', label: 'العنوان', maxlength: 200 }
+              ].concat(dyn),
+              onSubmit: function (v) { return api('portal.updateProfile', pack(v)); },
+              onDone: function () { toast('تم حفظ بياناتك.', 'ok'); navigate('profile'); }
+            });
           });
         });
         $('.head-actions', container).appendChild(eb);
       }
+      var gb = document.createElement('button');
+      if (state.user.role === 'student' && d.record) {
+        gb.type = 'button'; gb.className = 'btn'; gb.textContent = 'أولياء أمري';
+        gb.addEventListener('click', function () { if (window.SCI_UI.ext.myGuardians) window.SCI_UI.ext.myGuardians(); });
+        $('.head-actions', container).appendChild(gb);
+      }
+      extraRows(state.user.role === 'student' ? 'students' : 'teachers', d.extra).then(function (more) {
+        if (more.length) $('#prof', container).innerHTML = '<dl class="kv">' + rows.concat(more).map(function (p) { return '<dt>' + esc(p[0]) + '</dt><dd>' + esc(dash(p[1])) + '</dd>'; }).join('') + '</dl>';
+      });
       $('#prof', container).innerHTML = '<dl class="kv">' + rows.map(function (p) {
         return '<dt>' + esc(p[0]) + '</dt><dd>' + esc(dash(p[1])) + '</dd>';
       }).join('') + '</dl>';
@@ -1008,6 +1281,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     return MENU.filter(function (m) {
       if (m.hideFor && m.hideFor.indexOf(state.user.role) >= 0) return false;
       if (m.roles && m.roles.indexOf(state.user.role) < 0) return false;
+      if (m.when && !m.when(state)) return false;
       return !m.need || can(m.need[0], m.need[1]);
     });
   }
@@ -1034,6 +1308,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     var c = $('#content');
     c.innerHTML = '';
     m.render(c);
+    ((window.SCI_UI && window.SCI_UI.hooks && window.SCI_UI.hooks.navigate) || []).forEach(function (f) { try { f(m.id, c); } catch (e) { /* لا يوقف التنقل */ } });
     closeSide();
     c.focus();
   }
@@ -1051,20 +1326,22 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     state.perms = d.permissions || {};
     state.assignable = d.assignableRoles || [];
     state.canSetShare = !!d.canSetShare;
+    state.affiliate = d.affiliate || null; state.features = d.features || {}; state.org = d.org || {};
     $('#user-name').textContent = d.user.full_name;
     $('#user-role').textContent = ROLE_LABELS[d.user.role] || d.user.role;
     $('#login-screen').hidden = true;
     $('#app-shell').hidden = false;
     buildNav();
     (window.SCI_UI.hooks.login || []).forEach(function (f) { try { f(); } catch (e) { /* لا يوقف الدخول */ } });
-    navigate(d.user.role === 'student' ? 'study' : d.user.role === 'teacher' ? 'teaching' : 'dashboard');
+    loadLookups();
+    navigate(d.user.role === 'student' ? 'study' : d.user.role === 'teacher' ? 'teaching' : d.user.role === 'marketer' ? 'affiliate' : 'dashboard');
   }
 
   function showLogin(message) {
     $('#reset-screen').hidden = true; $('#forgot-form').hidden = true;
     ((window.SCI_UI && window.SCI_UI.hooks && window.SCI_UI.hooks.logout) || []).forEach(function (f) { try { f(); } catch (e) { /* يُتجاهل */ } });
     state.token = null; state.user = null; state.perms = {};
-    store.remove('sci_token');
+    store.remove(TOKEN_KEY);
     $('#app-shell').hidden = true;
     $('#content').innerHTML = '';
     $('#login-screen').hidden = false;
@@ -1088,7 +1365,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     loginBusy = true; $('#login-btn').disabled = true; box.hidden = true;
     api('auth.login', { identifier: id, password: pw }).then(function (d) {
       state.token = d.token;
-      store.set('sci_token', d.token);
+      store.set(TOKEN_KEY, d.token);
       applySession(d);
     }).catch(function (err) {
       box.textContent = err.message || 'تعذر تسجيل الدخول.';
@@ -1108,7 +1385,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   window.SCI_UI = {
     api: api, esc: esc, dash: dash, can: can, toast: toast, openModal: openModal, openForm: openForm,
     confirmBox: confirmBox, detailsModal: detailsModal, listView: listView, optionsFrom: optionsFrom,
-    state: state, navigate: navigate, printNode: printNode, ext: {}, hooks: { login: [], logout: [] },
+    state: state, navigate: navigate, printNode: printNode, publicCall: publicCall, orgCode: orgCode, ext: {}, hooks: { login: [], logout: [], navigate: [] }, loadLookups: loadLookups, lookupItems: lookupItems, lookupLabel: lookupLabel, showHelp: showHelp, helpBtn: helpBtn, withDyn: withDyn, extraRows: extraRows, dynDisplay: dynDisplay,
     addMenu: function (item) {
       var i = MENU.map(function (m) { return m.id; }).indexOf('profile');
       MENU.splice(i < 0 ? MENU.length : i, 0, item);
@@ -1153,7 +1430,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   });
 
   var boot = window.SCI_BOOT || {};
-  var saved = store.get('sci_token');
+  var saved = store.get(TOKEN_KEY);
   if (boot.page === 'none') {
     /* الصفحة قيد إعادة التوجيه إلى الموقع العام */
   } else if (boot.page === 'reset' && boot.token) {
@@ -1429,11 +1706,13 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
       ],
       headerActions: function () { return can('groups', 'c') ? [{ label: '+ مجموعة', run: function (reload) { groupForm(course, null, reload); } }] : []; },
       rowActions: function () {
-        if (!can('groups', 'u')) return [];
-        return [
+        var acts = [{ label: 'إحصائيات', run: function (r) { if (U.ext.groupStats) U.ext.groupStats(r); } }];
+        if (!can('groups', 'u')) return acts;
+        return acts.concat([
+          { label: 'جدول المحاضرات التلقائي', run: function (r, reload) { if (U.ext.groupSchedule) U.ext.groupSchedule(r, reload); } },
           { label: 'تعديل', run: function (r, reload) { groupForm(course, r, reload); } },
           { label: 'الحالة', run: function (r, reload) { statusForm('groups.setStatus', ACT, r, reload); } }
-        ];
+        ]);
       }
     })(node);
   }
@@ -1459,6 +1738,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     rowActions: function () {
       var a = [];
       if (can('groups', 'r')) a.push({ label: 'المجموعات', run: function (r) { openGroups(r); } });
+      if (can('courses', 'r')) a.push({ label: 'إحصائيات الدورة', run: function (r) { if (U.ext.courseStats) U.ext.courseStats(r); } });
       if (can('enrollments', 'r')) a.push({ label: 'المسجلون', run: function (r) { openCourseStudents(r); } });
       if (can('lessons', 'u')) a.push({ label: 'المحتوى', run: function (r) { openContentManager('course', r.id, r.name); } });
       if (can('attendance', 'u')) a.push({ label: 'المحاضرات والحضور', run: function (r) { U.ext.openSessions('course', r.id, r.name); } });
@@ -1667,6 +1947,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
           { key: 'student_ref', label: 'رقم الطالب (مثال 2026-AB12CD)', required: true, maxlength: 40 },
           { key: isCourse ? 'course_id' : 'diploma_id', label: isCourse ? 'الدورة' : 'الدبلوم', type: 'select', required: true, options: opts },
           { key: 'discount', label: 'الخصم', type: 'number' },
+          { key: 'coupon_code', label: 'رمز قسيمة الخصم (اختياري)', maxlength: 20, help: 'يُضاف خصم القسيمة إلى الخصم اليدوي.' },
           { key: 'status', label: 'الحالة', type: 'select', options: optionsFrom({ active: 'نشط', pending: 'معلّق' }) },
           { key: 'notes', label: 'ملاحظات', maxlength: 500 }
         ].concat(['system_admin', 'org_admin'].indexOf(U.state.user.role) >= 0 ? [{ key: 'prereq_override_reason', label: 'سبب تجاوز المتطلبات السابقة (عند الحاجة فقط، يُسجَّل)', maxlength: 300 }] : []),
@@ -2298,7 +2579,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
         { key: 'title', label: 'عنوان المحاضرة', required: true, maxlength: 150 },
         { key: 'starts_at', label: 'تبدأ في', type: 'datetime-local', required: true },
         { key: 'ends_at', label: 'تنتهي في', type: 'datetime-local' },
-        { key: 'meeting_url', label: 'رابط المحاضرة المباشرة (https)', maxlength: 500 },
+        { key: 'provider', label: 'نوع الفصل', type: 'select', options: [{ value: 'link', label: 'رابط خارجي (Meet/Zoom…)' }, { value: 'jitsi', label: 'فصل مباشر داخل المنصة (كاميرا وصوت ورفع اليد ومحادثة)' }] },
+        { key: 'meeting_url', label: 'رابط المحاضرة (للرابط الخارجي فقط، https)', maxlength: 500 },
         { key: 'notes', label: 'ملاحظات', maxlength: 500 }
       ];
       if (data.groups.length) f.splice(3, 0, { key: 'group_id', label: 'المجموعة (فارغ = كل المسجلين)', type: 'select', options: [{ value: '', label: 'كل المسجلين' }].concat(data.groups.map(function (g) { return { value: g.id, label: g.name }; })) });
@@ -2553,9 +2835,10 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
       html += table(['المحاضرة', 'الدورة/المادة', 'الموعد', 'المدرب', 'الحالة', 'حضوري', 'الرابط'], sessions.map(function (s) {
         var url = safeUrl(s.meeting_url);
         return '<tr><td>' + esc(s.title) + '</td><td>' + esc(s.owner_name) + '</td><td>' + esc(s.starts_at) + '</td><td>' + esc(dash(s.teacher_name)) + '</td><td>' + badge(SESS, s.status) + '</td>' +
-          '<td>' + (s.my_status ? esc(ATD[s.my_status]) : '—') + '</td><td>' + (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">دخول</a>' : '—') + '</td></tr>';
+          '<td>' + (s.my_status ? esc(ATD[s.my_status]) : '—') + '</td><td>' + (url && url.indexOf('https://meet.jit.si/') === 0 ? '<button type="button" class="btn sm primary" data-jitsi="' + esc(url) + '" data-title="' + esc(s.title) + '">دخول الفصل</button>' : (url ? '<a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">دخول</a>' : '—')) + '</td></tr>';
       }), 'لا توجد محاضرات مجدولة.');
       box.innerHTML = html;
+      box.onclick = function (ev) { var j = ev.target.closest('[data-jitsi]'); if (j && U.ext.openClass) U.ext.openClass(j.getAttribute('data-jitsi'), j.getAttribute('data-title')); };
     }).catch(function (e) { box.innerHTML = '<div class="empty"></div>'; box.querySelector('.empty').textContent = e.message; });
   }
 
@@ -2576,7 +2859,7 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
   var INVS = { open: 'مفتوحة', partial: 'مسددة جزئيًا', paid: 'مسددة', cancelled: 'ملغاة' };
   var PAYS = { approved: 'معتمدة', cancelled: 'ملغاة' };
   var INST = { pending: 'مستحق', partial: 'جزئي', paid: 'مسدد', cancelled: 'ملغى' };
-  var METHODS = { cash: 'نقدًا', transfer: 'تحويل', card: 'بطاقة', cheque: 'شيك', other: 'أخرى' };
+  var METHODS = { cash: 'نقدًا', transfer: 'تحويل', card: 'بطاقة', cheque: 'شيك', wallet: 'المحفظة', other: 'أخرى' };
   var DUES = { accrued: 'قيد الاعتماد', approved: 'معتمد', cancelled: 'ملغى' };
   var ADMIN = ['system_admin', 'org_admin'];
 
@@ -2883,8 +3166,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
     var box = container.querySelector('#mf');
     api('portal.finance').then(function (d) {
       box.innerHTML = '<div class="cards">' + stat('إجمالي المستحق', money(d.totals.due)) + stat('المدفوع', money(d.totals.paid)) + stat('المتبقي', money(d.totals.balance), d.totals.balance > 0 ? 'bad-txt' : '') + '</div>' +
-        '<h3 style="margin:6px 0 10px">الفواتير</h3>' + table(['الفاتورة', 'البند', 'المستحق', 'المدفوع', 'المتبقي', 'الحالة', 'الاستحقاق'], d.invoices.map(function (i) {
-          return '<tr><td>' + esc(i.invoice_no) + '</td><td>' + esc(i.source_name) + '</td><td>' + money(i.total_due) + '</td><td>' + money(i.paid) + '</td><td>' + money(i.balance) + '</td><td>' + badge(INVS, i.status) + '</td><td>' + esc(dash(i.due_date)) + '</td></tr>';
+        '<h3 style="margin:6px 0 10px">الفواتير</h3>' + table(['الفاتورة', 'البند', 'المستحق', 'المدفوع', 'المتبقي', 'الحالة', 'الاستحقاق', ''], d.invoices.map(function (i, idx) {
+          return '<tr><td>' + esc(i.invoice_no) + '</td><td>' + esc(i.source_name) + '</td><td>' + money(i.total_due) + '</td><td>' + money(i.paid) + '</td><td>' + money(i.balance) + '</td><td>' + badge(INVS, i.status) + '</td><td>' + esc(dash(i.due_date)) + '</td><td>' + (i.balance > 0 && U.state.features && U.state.features.wallet ? btn('سداد من المحفظة', 'data-wp="' + idx + '"', 'primary') : '') + '</td></tr>';
         }), 'لا توجد فواتير.') +
         '<h3 style="margin:18px 0 10px">الأقساط</h3>' + table(['الفاتورة', 'القسط', 'الاستحقاق', 'المبلغ', 'المسدد', 'الحالة'], d.installments.map(function (x) {
           return '<tr' + (x.overdue ? ' class="row-late"' : '') + '><td>' + esc(x.invoice_no) + '</td><td>' + esc(x.number) + '</td><td>' + esc(x.due_date) + (x.overdue ? ' <span class="bad-txt">متأخر</span>' : '') + '</td><td>' + money(x.amount) + '</td><td>' + money(x.paid_amount) + '</td><td>' + badge(INST, x.status) + '</td></tr>';
@@ -2893,6 +3176,8 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
           return '<tr><td>' + esc(p.receipt_no) + '</td><td>' + esc(p.invoice_no) + '</td><td>' + money(p.amount) + '</td><td>' + esc(METHODS[p.method] || p.method) + '</td><td>' + esc(p.paid_at) + '</td><td>' + btn('إيصال', 'data-rc="' + i + '"') + '</td></tr>';
         }), 'لا توجد دفعات.');
       box.onclick = function (ev) {
+        var wp = ev.target.closest('[data-wp]');
+        if (wp && U.ext.payFromWallet) { U.ext.payFromWallet(d.invoices[Number(wp.getAttribute('data-wp'))], function () { myFinanceView(container); }); return; }
         var b = ev.target.closest('[data-rc]');
         if (b) loadReceipt('portal.receipt', { payment_id: d.payments[Number(b.getAttribute('data-rc'))].id });
       };
@@ -3044,9 +3329,12 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
       (c.status === 'revoked' ? '<div class="cert-revoked">شهادة ملغاة</div>' : '') +
       '<div class="cert-foot"><div>رقم الشهادة: <strong>' + esc(c.cert_no) + '</strong><br>رمز التحقق: <strong dir="ltr">' + esc(c.verify_code) + '</strong><br>تاريخ الإصدار: ' + esc(String(c.issued_at).substring(0, 10)) + '</div>' +
       '<div style="text-align:center"><div id="qr-box"></div><div class="hint" style="max-width:220px;word-break:break-all">' + (c.verify_url ? esc(c.verify_url) : '') + '</div></div></div></div></div>' +
-      '<div class="form-actions no-print"><button type="button" class="btn primary" data-print>طباعة</button></div>';
+      '<div class="form-actions no-print"><button type="button" class="btn primary" data-print>طباعة</button> <button type="button" class="btn" data-pdf>تنزيل PDF</button></div>';
     openModal({ title: 'شهادة ' + c.cert_no, node: node, wide: true });
     node.querySelector('[data-print]').addEventListener('click', printNode);
+    node.querySelector('[data-pdf]').addEventListener('click', function () {
+      api(U.state.user.role === 'student' ? 'portal.certificatePdf' : 'certificates.pdf', { id: c.id }).then(function (f) { if (U.ext.downloadB64) U.ext.downloadB64(f.name, f.mime, f.data); else toast('تعذر التنزيل.', 'error'); }).catch(fail);
+    });
     if (c.verify_url && c.status === 'issued') {
       loadQr(function () {
         try { new window.QRCode(node.querySelector('#qr-box'), { text: c.verify_url, width: 110, height: 110 }); } catch (e) { /* يُتجاهل */ }
@@ -3292,5 +3580,956 @@ dl.kv dt{color:var(--muted)} dl.kv dd{margin:0;word-break:break-word}
 })();
 </script>
 
+  <script>
+(function () {
+  'use strict';
+  var U = window.SCI_UI, api = U.api, esc = U.esc, dash = U.dash, can = U.can, toast = U.toast, state = U.state;
+  var openForm = U.openForm, openModal = U.openModal, confirmBox = U.confirmBox, optionsFrom = U.optionsFrom, listView = U.listView;
+
+  function fail(e) { toast((e && e.message) || 'تعذر إتمام العملية.', 'error'); }
+  function money(n) { return Number(n || 0).toLocaleString('en-US', { maximumFractionDigits: 2 }); }
+  function btn(label, attrs, cls) { return '<button type="button" class="btn sm ' + (cls || '') + '" ' + attrs + '>' + esc(label) + '</button>'; }
+  function badge(map, v) { return '<span class="badge s-' + esc(v) + '">' + esc(map[v] || v) + '</span>'; }
+  function stat(label, value, cls) { return '<div class="stat"><div class="v ' + (cls || '') + '">' + esc(value) + '</div><div class="l">' + esc(label) + '</div></div>'; }
+  function table(head, rows, empty) {
+    if (!rows.length) return '<div class="empty">' + esc(empty || 'لا توجد بيانات.') + '</div>';
+    return '<div class="table-wrap"><table><thead><tr>' + head.map(function (h) { return '<th scope="col">' + esc(h) + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.join('') + '</tbody></table></div>';
+  }
+  function byId(id) { return document.getElementById(id); }
+  function uid() { return String(Date.now()) + Math.random().toString(36).slice(2, 8); }
+  function copy(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { toast('تم النسخ.', 'ok'); }, function () { toast('تعذر النسخ، انسخ يدويًا.', 'error'); });
+    else toast('انسخ يدويًا: ' + text, 'ok');
+  }
+  function invalidateLookups() { state.lookupsLoaded = false; U.loadLookups(); }
+
+  /* ===================== الوضع الليلي/النهاري ===================== */
+  var de = document.documentElement;
+  function savedTheme() { try { return localStorage.getItem('sci_theme'); } catch (e) { return null; } }
+  function currentTheme() { return (de && de.getAttribute && de.getAttribute('data-theme')) || 'light'; }
+  function setTheme(t, persist) {
+    if (de && de.setAttribute) de.setAttribute('data-theme', t);
+    if (persist) { try { localStorage.setItem('sci_theme', t); } catch (e) { /* التخزين محجوب */ } }
+    ['theme-btn', 'login-theme'].forEach(function (id) { var b = byId(id); if (b) b.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false'); });
+  }
+  (function initTheme() {
+    var t = savedTheme();
+    if (!t) { try { t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) { t = 'light'; } }
+    setTheme(t === 'dark' ? 'dark' : 'light', false);
+  })();
+  function toggleTheme() { setTheme(currentTheme() === 'dark' ? 'light' : 'dark', true); }
+  ['theme-btn', 'login-theme'].forEach(function (id) { var b = byId(id); if (b) b.addEventListener('click', toggleTheme); });
+
+  /* ===================== أزرار الرأس ===================== */
+  var publicWa = '';
+  function waNumber() { return String((state.org && state.org.whatsapp) || publicWa || '').replace(/\D/g, ''); }
+  function openWhatsApp() {
+    var num = waNumber();
+    if (!num) { toast('لم يُضبط رقم واتساب المؤسسة بعد (الإعدادات).', 'error'); return; }
+    openForm({
+      title: 'تواصل معنا عبر واتساب', submitLabel: 'فتح واتساب', help: 'support', values: { info: true },
+      fields: [
+        { key: 'msg', label: 'اكتب مشكلتك أو سؤالك', type: 'textarea', required: true, maxlength: 800, rows: 5 },
+        { key: 'info', label: 'إرفاق بياناتي بالرسالة (الاسم واسم المستخدم والدور والشاشة) لتسريع المساعدة', type: 'checkbox' }
+      ],
+      onSubmit: function (v) {
+        var lines = ['السلام عليكم ' + ((state.org && state.org.name) || ''), v.msg];
+        if (v.info && state.user) lines.push('— — —', 'الاسم: ' + state.user.full_name, 'اسم المستخدم: ' + state.user.username, 'الدور: ' + state.user.role, 'الشاشة: ' + (state.view || ''));
+        window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
+        return Promise.resolve();
+      }
+    });
+  }
+  var chat = [];
+  function openAssistant() {
+    var node = document.createElement('div');
+    var enabled = state.features && state.features.ai;
+    node.innerHTML = '<div class="chat-log" id="ai-log" aria-live="polite"></div>' + (enabled
+      ? '<form class="chat-form" id="ai-form"><input id="ai-input" maxlength="800" placeholder="اسألني عن أي شيء في المنصة…" aria-label="سؤالك"><button type="submit" class="btn primary">إرسال</button></form><p class="hint">المساعد يجيب بمعلومات عامة عن المنصة ولا ينفّذ إجراءات. للمسائل الخاصة بحسابك أو أموالك استخدم الدعم أو واتساب.</p>'
+      : '<div class="empty">المساعد الذكي غير مفعّل بعد. يمكنك استخدام «طلبات الدعم» أو التواصل عبر واتساب.</div>');
+    var m = openModal({ title: 'المساعد الذكي', node: node });
+    var log = node.querySelector('#ai-log');
+    function add(role, text) {
+      var d = document.createElement('div');
+      d.className = 'chat-msg ' + (role === 'user' ? 'user' : 'bot');
+      d.textContent = text;
+      log.appendChild(d);
+      log.scrollTop = log.scrollHeight;
+    }
+    chat.forEach(function (c) { add(c.role, c.text); });
+    if (!enabled) return;
+    if (!chat.length) add('assistant', 'مرحبًا! كيف أساعدك؟');
+    var form = node.querySelector('#ai-form'), busy = false;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var inp = node.querySelector('#ai-input'), q = String(inp.value || '').trim();
+      if (!q || busy) return;
+      busy = true; inp.value = ''; add('user', q);
+      api('assistant.ask', { message: q, history: chat.slice(-8) }).then(function (d) {
+        chat.push({ role: 'user', text: q }); chat.push({ role: 'assistant', text: d.reply }); add('assistant', d.reply);
+      }).catch(function (err) { add('assistant', (err && err.message) || 'تعذر الرد الآن.'); }).then(function () { busy = false; });
+    });
+  }
+  var bind = function (id, fn) { var b = byId(id); if (b) b.addEventListener('click', fn); };
+  bind('refresh-btn', function () { U.navigate(state.view); toast('تم تحديث الصفحة.', 'ok'); });
+  bind('wa-btn', openWhatsApp);
+  bind('ai-btn', openAssistant);
+  bind('acct-btn', function () { U.navigate('profile'); });
+  U.hooks.login.push(function () { var b = byId('wa-btn'); if (b) b.hidden = !waNumber(); chat = []; });
+
+  // تعليمات للزائر قبل الدخول، وزر واتساب في شاشة الدخول
+  function publicHelp(topic) {
+    U.publicCall('public.help', { topic: topic }).then(function (d) {
+      var node = document.createElement('div');
+      node.innerHTML = (d.body ? '<div class="prose-sm">' + esc(d.body) + '</div>' : '<p class="hint">لا يوجد شرح لهذا الموضوع بعد.</p>') +
+        (d.video_embed && d.video_embed.indexOf('https://www.youtube-nocookie.com/embed/') === 0 ? '<div class="video-wrap"><iframe src="' + esc(d.video_embed) + '" title="شرح بالفيديو" loading="lazy" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>' : '');
+      openModal({ title: d.title || 'مساعدة', node: node, wide: !!d.video_embed });
+    }).catch(fail);
+  }
+  document.addEventListener('click', function (e) {
+    var h = e.target && e.target.closest ? e.target.closest('[data-help]') : null;
+    if (!h || (h.closest && h.closest('.modal form'))) return;
+    if (state.token) U.showHelp(h.getAttribute('data-help')); else publicHelp(h.getAttribute('data-help'));
+  });
+  document.addEventListener('click', function (e) {
+    var eye = e.target && e.target.closest ? e.target.closest('[data-eye]') : null;
+    if (!eye || (eye.closest && eye.closest('.modal form'))) return;
+    var i = eye.parentNode && eye.parentNode.querySelector ? eye.parentNode.querySelector('input') : null;
+    if (i) i.type = i.type === 'password' ? 'text' : 'password';
+  });
+  try {
+    U.publicCall('public.info', {}).then(function (d) {
+      publicWa = String(d.whatsapp || '');
+      applyBrand(d.brand);
+      var a = byId('login-wa'), n = publicWa.replace(/\D/g, '');
+      if (a && n) { a.href = 'https://wa.me/' + n; a.hidden = false; }
+    }).catch(function () { /* اختياري */ });
+  } catch (e) { /* قبل تهيئة الخادم */ }
+
+  function applyBrand(b) {
+    if (!b) return;
+    var root = document.documentElement.style;
+    if (/^#[0-9a-fA-F]{6}$/.test(b.color || '')) { root.setProperty('--primary', b.color); root.setProperty('--navy-dark', b.color); }
+    if (/^#[0-9a-fA-F]{6}$/.test(b.color2 || '')) root.setProperty('--teal', b.color2);
+    if (/^https:\/\/[^\s"'<>]+$/.test(b.logo || '')) Array.prototype.forEach.call(document.querySelectorAll('.brand-mark'), function (el) { el.innerHTML = '<img src="' + b.logo + '" alt="">'; });
+  }
+  U.hooks.login.push(function () { applyBrand(state.org && state.org.brand); });
+
+  // أيقونة «؟» تلقائية بجانب عنوان الشاشات
+  var HELP_VIEWS = { study: 'study', myExams: 'exam', myAssignments: 'assignment', myFinance: 'finance', wallet: 'wallet', affiliate: 'marketing', mySessions: 'live_class',
+                     myCerts: 'certificates', profile: 'profile', mySupport: 'support', certificates: 'certificates', walletAdmin: 'topup', affiliates: 'marketing', documents: 'documents' };
+  U.hooks.navigate.push(function (id, c) {
+    var topic = HELP_VIEWS[id];
+    if (!topic) return;
+    var tries = 0;
+    (function attach() {
+      var h = c.querySelector ? c.querySelector('.page-head h2') : null;
+      if (h && h.appendChild && !(c.querySelector('[data-help-view]') && c.querySelector('[data-help-view]').getAttribute && c.querySelector('[data-help-view]').getAttribute('data-help-view'))) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'help-btn'; b.textContent = '؟';
+        b.setAttribute('data-help', topic); b.setAttribute('data-help-view', '1'); b.setAttribute('aria-label', 'شرح وتعليمات هذه الشاشة');
+        h.appendChild(b);
+      } else if (!h && ++tries < 6) setTimeout(attach, 300);
+    })();
+  });
+
+  /* ===================== المحفظة (لكل مستخدم) ===================== */
+  var TXT = { topup: 'شحن', payment: 'سداد', commission: 'عمولة', commission_reversal: 'إلغاء عمولة', refund: 'استرجاع', adjustment: 'تسوية', withdrawal: 'سحب' };
+  var TUS = { pending: 'قيد المراجعة', approved: 'معتمد', rejected: 'مرفوض', cancelled: 'ملغى' };
+
+  function topupModal(d, m, reload) {
+    var node = document.createElement('div');
+    node.innerHTML = '<div class="card" style="margin-bottom:12px"><h3>' + esc(m.name) + ' <button type="button" class="help-btn" data-help="' + esc(m.help_topic || 'topup') + '" aria-label="شرح">؟</button></h3>' +
+      (m.instructions ? '<div class="prose-sm">' + esc(m.instructions) + '</div>' : '') +
+      (m.account_info ? '<div class="copy-box" style="margin-top:8px"><input readonly value="' + esc(m.account_info) + '" aria-label="بيانات الحساب"><button type="button" class="btn sm" data-copy>نسخ</button></div>' : '') +
+      '<p class="hint">' + (m.fee_percent || m.fee_fixed ? 'الرسوم: ' + (m.fee_percent ? m.fee_percent + '%' : '') + (m.fee_fixed ? ' + ' + money(m.fee_fixed) : '') + '. ' : 'بلا رسوم. ') +
+      (m.min_amount ? 'الحد الأدنى ' + money(m.min_amount) + '. ' : '') + (m.max_amount ? 'الحد الأعلى ' + money(m.max_amount) + '.' : '') + '</p></div>' +
+      '<form id="tp-form" novalidate><div class="field"><label for="tp-amount">المبلغ (' + esc(d.currency) + ') *</label><input id="tp-amount" type="number" min="0" step="any" inputmode="decimal"></div>' +
+      '<div class="field"><label for="tp-ref">رقم العملية أو كود الشراء' + (m.requires_reference ? ' *' : '') + '</label><input id="tp-ref" maxlength="80" dir="ltr" autocomplete="off"><div class="hint">انسخه من رسالة التأكيد أو من سجل العمليات في تطبيق الجهة بعد التحويل.</div></div>' +
+      '<div class="form-error" role="alert" hidden></div><div class="form-actions"><button type="submit" class="btn primary">إرسال طلب الشحن</button><button type="button" class="btn" data-close>إلغاء</button></div></form>';
+    var mod = openModal({ title: 'شحن المحفظة', node: node });
+    var cp = node.querySelector('[data-copy]');
+    if (cp) cp.addEventListener('click', function () { copy(m.account_info); });
+    var busy = false, cref = uid();
+    node.querySelector('#tp-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (busy) return;
+      var box = node.querySelector('.form-error'), amount = Number(node.querySelector('#tp-amount').value), ref = String(node.querySelector('#tp-ref').value || '').trim();
+      box.hidden = true;
+      if (!(amount > 0)) { box.textContent = 'أدخل مبلغًا أكبر من صفر.'; box.hidden = false; return; }
+      if (m.requires_reference && !ref) { box.textContent = 'أدخل رقم العملية أو كود الشراء.'; box.hidden = false; return; }
+      busy = true;
+      api('wallet.topup', { method_id: m.id, amount: amount, reference: ref, client_ref: cref }).then(function (r) {
+        mod.close(); toast('أُرسل طلب الشحن وسيُضاف الرصيد بعد تحقق الإدارة.', 'ok'); reload();
+      }).catch(function (err) { box.textContent = err.message; box.hidden = false; busy = false; });
+    });
+  }
+
+  function walletView(container) {
+    container.innerHTML = '<div class="page-head"><h2>محفظتي</h2><div class="head-actions"></div></div><div id="wl"></div>';
+    var box = container.querySelector('#wl');
+    function load() {
+      api('wallet.me').then(function (d) {
+        box.innerHTML = '<div class="cards"><div class="stat"><div class="big-balance">' + money(d.balance) + '</div><div class="l">الرصيد المتاح (' + esc(d.currency) + ')</div></div></div>' +
+          '<div class="card" style="margin-bottom:14px"><h3>شحن المحفظة</h3>' + (d.methods.length ? '<p class="hint">اختر طريقة السداد:</p><div class="item-grid">' + d.methods.map(function (m, i) {
+            return '<div class="card item-card"><h3>' + esc(m.name) + '</h3><div class="hint">' + esc((m.instructions || '').substring(0, 90)) + '</div>' + btn('اختيار', 'data-m="' + i + '"', 'primary') + '</div>';
+          }).join('') + '</div>' : '<div class="empty">لا توجد طرق سداد مفعّلة. تواصل مع الإدارة.</div>') + '</div>' +
+          '<div class="head-actions" style="margin-bottom:12px">' + btn('طلب سحب رصيد', 'data-wd') + '</div>' +
+          (d.topups.some(function (t) { return t.status === 'pending'; }) || d.topups.length ? '<h3 style="margin:10px 0">طلبات الشحن</h3>' + table(['التاريخ', 'الطريقة', 'المبلغ', 'رقم العملية', 'الحالة', ''], d.topups.map(function (t) {
+            return '<tr><td>' + esc(t.created_at) + '</td><td>' + esc(t.method_name) + '</td><td>' + money(t.amount) + '</td><td dir="ltr">' + esc(dash(t.reference)) + '</td><td>' + badge(TUS, t.status) + (t.review_note ? '<div class="hint">' + esc(t.review_note) + '</div>' : '') + '</td><td>' + (t.status === 'pending' ? btn('إلغاء', 'data-ct="' + esc(t.id) + '"') : '') + '</td></tr>';
+          })) : '') +
+          (d.withdrawals.length ? '<h3 style="margin:14px 0 10px">طلبات السحب</h3>' + table(['التاريخ', 'المبلغ', 'الطريقة', 'الحالة'], d.withdrawals.map(function (t) {
+            return '<tr><td>' + esc(t.created_at) + '</td><td>' + money(t.amount) + '</td><td>' + esc(t.method_name) + '</td><td>' + badge(TUS, t.status) + (t.review_note ? '<div class="hint">' + esc(t.review_note) + '</div>' : '') + '</td></tr>';
+          })) : '') +
+          '<h3 style="margin:14px 0 10px">سجل الحركات</h3>' + table(['التاريخ', 'النوع', 'المبلغ', 'الرصيد بعد', 'ملاحظة'], d.transactions.map(function (t) {
+            return '<tr><td>' + esc(t.created_at) + '</td><td>' + esc(TXT[t.tx_type] || t.tx_type) + '</td><td class="' + (t.amount < 0 ? 'bad-txt' : 'ok-txt') + '" dir="ltr">' + money(t.amount) + '</td><td>' + money(t.balance_after) + '</td><td>' + esc(dash(t.note)) + '</td></tr>';
+          }), 'لا توجد حركات بعد.');
+        box.onclick = function (ev) {
+          var mb = ev.target.closest('[data-m]');
+          if (mb) { topupModal(d, d.methods[Number(mb.getAttribute('data-m'))], load); return; }
+          var ct = ev.target.closest('[data-ct]');
+          if (ct) { api('wallet.cancelTopup', { id: ct.getAttribute('data-ct') }).then(function () { toast('أُلغي الطلب.', 'ok'); load(); }).catch(fail); return; }
+          if (ev.target.closest('[data-wd]')) {
+            openForm({
+              title: 'طلب سحب رصيد', submitLabel: 'إرسال الطلب', help: 'withdraw',
+              fields: [
+                { key: 'amount', label: 'المبلغ (المتاح ' + money(d.balance) + ')', type: 'number', required: true, help: d.min_withdraw ? 'الحد الأدنى ' + money(d.min_withdraw) : '' },
+                { key: 'method_name', label: 'طريقة الاستلام (مثل: حاسب، جيب، تحويل بنكي)', required: true, maxlength: 80 },
+                { key: 'account_info', label: 'رقم الحساب أو المحفظة واسم المستلم', required: true, maxlength: 200 }
+              ],
+              onSubmit: function (v) { return api('wallet.withdraw', { amount: v.amount, method_name: v.method_name, account_info: v.account_info, client_ref: uid() }); },
+              onDone: function () { toast('أُرسل طلب السحب للمراجعة.', 'ok'); load(); }
+            });
+          }
+        };
+      }).catch(function (e) { box.innerHTML = '<div class="empty"></div>'; box.querySelector('.empty').textContent = e.message; });
+    }
+    load();
+  }
+
+  U.ext.payFromWallet = function (inv, reload) {
+    api('wallet.me').then(function (w) {
+      var max = Math.min(Number(inv.balance) || 0, w.balance);
+      if (max <= 0) { toast('رصيد محفظتك غير كافٍ. اشحن المحفظة أولًا من «محفظتي».', 'error'); return; }
+      openForm({
+        title: 'سداد من المحفظة — ' + inv.invoice_no, submitLabel: 'سداد', help: 'wallet', values: { amount: max },
+        fields: [{ key: 'amount', label: 'المبلغ (المتبقي ' + money(inv.balance) + ' — رصيدك ' + money(w.balance) + ')', type: 'number', required: true }],
+        onSubmit: function (v) { return api('wallet.payInvoice', { invoice_id: inv.id, amount: v.amount, client_ref: uid() }); },
+        onDone: function () { toast('تم السداد من المحفظة.', 'ok'); if (reload) reload(); }
+      });
+    }).catch(fail);
+  };
+
+  /* ===================== إدارة المحافظ والمدفوعات ===================== */
+  var METHOD_KIND = { wallet_app: 'محفظة/تطبيق', manual_transfer: 'تحويل يدوي', cash: 'نقدًا', card: 'بطاقة', provider: 'مزود دفع', other: 'أخرى' };
+  var ACT = { active: 'مفعّل', inactive: 'معطّل' };
+
+  function reviewActions(action) {
+    return function (row) {
+      if (row.status !== 'pending') return [];
+      return [
+        { label: 'اعتماد', run: function (r, reload) { confirmBox('اعتماد الطلب بمبلغ ' + money(r.amount) + ' للمستخدم ' + r.user_name + '؟', 'اعتماد').then(function (ok) { if (ok) api(action, { id: r.id, action: 'approve' }).then(function () { toast('تم الاعتماد.', 'ok'); reload(); }).catch(fail); }); } },
+        { label: 'رفض', danger: true, run: function (r, reload) {
+          openForm({ title: 'رفض الطلب', submitLabel: 'رفض', fields: [{ key: 'note', label: 'سبب الرفض (يصل للمستخدم)', type: 'textarea', required: true, maxlength: 300 }],
+            onSubmit: function (v) { return api(action, { id: r.id, action: 'reject', note: v.note }); }, onDone: function () { toast('تم الرفض.', 'ok'); reload(); } });
+        } }
+      ];
+    };
+  }
+
+  function methodForm(row, reload) {
+    var v = row ? JSON.parse(JSON.stringify(row)) : { kind: 'wallet_app', requires_reference: '1', sort_order: 100 };
+    v.requires_reference = String(v.requires_reference) === '1';
+    openForm({
+      title: row ? 'تعديل طريقة سداد' : 'طريقة سداد جديدة', values: v, help: 'topup',
+      fields: [
+        { key: 'name', label: 'اسم الطريقة (مثل: حاسب، جيب، ون كاش، كاش، جوالي)', required: true, maxlength: 80 },
+        { key: 'kind', label: 'النوع', type: 'select', options: optionsFrom(METHOD_KIND) },
+        { key: 'instructions', label: 'تعليمات السداد للمستخدم (خطوات التحويل)', type: 'textarea', rows: 5, maxlength: 2000 },
+        { key: 'account_info', label: 'بيانات الحساب المستلِم (رقم الحساب/المحفظة واسم المالك)', maxlength: 500 },
+        { key: 'min_amount', label: 'الحد الأدنى للشحن', type: 'number' }, { key: 'max_amount', label: 'الحد الأعلى (0 = بلا حد)', type: 'number' },
+        { key: 'fee_percent', label: 'رسوم نسبة %', type: 'number' }, { key: 'fee_fixed', label: 'رسوم ثابتة', type: 'number' },
+        { key: 'requires_reference', label: 'يتطلب رقم عملية/كود شراء', type: 'checkbox' },
+        { key: 'help_topic', label: 'مفتاح موضوع التعليمات المرتبط', maxlength: 40 }, { key: 'sort_order', label: 'الترتيب', type: 'number' }
+      ],
+      onSubmit: function (x) { if (row) x.id = row.id; return api(row ? 'methods.update' : 'methods.create', x); },
+      onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+    });
+  }
+
+  function statementModal(r) {
+    api('wallets.statement', { user_id: r.user_id }).then(function (rows) {
+      openModal({ title: 'كشف محفظة: ' + r.user_name, wide: true, html: table(['التاريخ', 'النوع', 'المبلغ', 'الرصيد بعد', 'ملاحظة'], rows.map(function (t) {
+        return '<tr><td>' + esc(t.created_at) + '</td><td>' + esc(TXT[t.tx_type] || t.tx_type) + '</td><td dir="ltr" class="' + (t.amount < 0 ? 'bad-txt' : 'ok-txt') + '">' + money(t.amount) + '</td><td>' + money(t.balance_after) + '</td><td>' + esc(dash(t.note)) + '</td></tr>';
+      }), 'لا توجد حركات.') });
+    }).catch(fail);
+  }
+
+  var WALLET_TABS = {
+    topups: function () {
+      return listView({
+        title: 'طلبات الشحن', listAction: 'topups.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث بالاسم أو رقم العملية',
+        columns: [{ key: 'created_at', label: 'التاريخ', sortable: true }, { key: 'user_name', label: 'المستخدم', sortable: true }, { key: 'method_name', label: 'الطريقة' },
+          { key: 'amount', label: 'المبلغ', sortable: true, fmt: function (r) { return money(r.amount); } }, { key: 'net_amount', label: 'الصافي', fmt: function (r) { return money(r.net_amount); } },
+          { key: 'reference', label: 'رقم العملية' }, { key: 'status', label: 'الحالة', sortable: true, map: TUS, badge: true }],
+        filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(TUS) }],
+        rowActions: can('topup_requests', 'u') ? reviewActions('topups.review') : function () { return []; }
+      });
+    },
+    withdrawals: function () {
+      return listView({
+        title: 'طلبات السحب', listAction: 'withdrawals.list', defaultSort: 'created_at',
+        columns: [{ key: 'created_at', label: 'التاريخ', sortable: true }, { key: 'user_name', label: 'المستخدم', sortable: true }, { key: 'amount', label: 'المبلغ', sortable: true, fmt: function (r) { return money(r.amount); } },
+          { key: 'method_name', label: 'طريقة الاستلام' }, { key: 'account_info', label: 'بيانات الاستلام' }, { key: 'status', label: 'الحالة', sortable: true, map: TUS, badge: true }],
+        filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(TUS) }],
+        rowActions: can('withdrawals', 'u') ? reviewActions('withdrawals.review') : function () { return []; }
+      });
+    },
+    wallets: function () {
+      return listView({
+        title: 'المحافظ', listAction: 'wallets.list', defaultSort: 'balance', searchPlaceholder: 'ابحث بالاسم',
+        columns: [{ key: 'user_name', label: 'المستخدم', sortable: true }, { key: 'username', label: 'اسم المستخدم' }, { key: 'role', label: 'الدور' },
+          { key: 'balance', label: 'الرصيد', sortable: true, fmt: function (r) { return money(r.balance); } }],
+        rowActions: function () {
+          var a = [{ label: 'كشف الحساب', run: statementModal }];
+          if (can('wallets', 'u')) a.push({ label: 'تعديل الرصيد', run: function (r, reload) {
+            openForm({ title: 'تعديل رصيد: ' + r.user_name, submitLabel: 'تنفيذ', values: { user_ref: r.username },
+              fields: [{ key: 'user_ref', label: 'اسم المستخدم', required: true }, { key: 'amount', label: 'المبلغ (موجب للإضافة وسالب للخصم)', type: 'number', required: true },
+                       { key: 'reason', label: 'السبب (يُحفظ في السجل ويصل للمستخدم)', required: true, maxlength: 200 }],
+              onSubmit: function (v) { v.client_ref = uid(); return api('wallets.adjust', v); }, onDone: function () { toast('تم التعديل.', 'ok'); reload(); } });
+          } });
+          return a;
+        }
+      });
+    },
+    methods: function () {
+      return listView({
+        title: 'طرق السداد', listAction: 'methods.list', defaultSort: 'sort_order',
+        columns: [{ key: 'name', label: 'الاسم', sortable: true }, { key: 'kind', label: 'النوع', map: METHOD_KIND }, { key: 'fee_percent', label: 'رسوم %' }, { key: 'min_amount', label: 'الحد الأدنى' },
+          { key: 'status', label: 'الحالة', sortable: true, map: ACT, badge: true }],
+        headerActions: function () {
+          var h = [];
+          if (can('payment_methods', 'c')) {
+            h.push({ label: '+ طريقة سداد', run: function (reload) { methodForm(null, reload); } });
+            h.push({ label: 'تحميل الطرق القياسية', run: function (reload) { api('methods.seed').then(function (r) { toast('أُضيفت ' + r.added + ' طريقة.', 'ok'); reload(); }).catch(fail); } });
+          }
+          return h;
+        },
+        rowActions: function () {
+          if (!can('payment_methods', 'u')) return [];
+          return [{ label: 'تعديل', run: function (r, reload) { methodForm(r, reload); } },
+                  { label: 'الحالة', run: function (r, reload) { openForm({ title: 'حالة الطريقة', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ACT) }],
+                    onSubmit: function (v) { return api('methods.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); reload(); } }); } }];
+        }
+      });
+    }
+  };
+
+  function tabsView(defs, helpTop) {
+    return function (container) {
+      var keys = Object.keys(defs);
+      container.innerHTML = '<div class="page-head"><h2>' + esc(helpTop.title) + '</h2></div><div class="tabs" role="tablist">' + keys.map(function (k, i) {
+        return '<button type="button" class="tab-btn' + (i === 0 ? ' active' : '') + '" role="tab" data-tab="' + k + '">' + esc(defs[k].label) + '</button>';
+      }).join('') + '</div><div id="tab-body"></div>';
+      var body = container.querySelector('#tab-body');
+      function show(k) {
+        Array.prototype.forEach.call(container.querySelectorAll('.tab-btn'), function (b) { b.classList.toggle('active', b.getAttribute('data-tab') === k); });
+        body.innerHTML = '';
+        defs[k].make()(body);
+      }
+      container.querySelector('.tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-tab]'); if (b) show(b.getAttribute('data-tab')); });
+      show(keys[0]);
+    };
+  }
+  var walletAdminView = tabsView({ topups: { label: 'طلبات الشحن', make: WALLET_TABS.topups }, withdrawals: { label: 'طلبات السحب', make: WALLET_TABS.withdrawals },
+    wallets: { label: 'المحافظ', make: WALLET_TABS.wallets }, methods: { label: 'طرق السداد', make: WALLET_TABS.methods } }, { title: 'المحافظ والمدفوعات' });
+
+  /* ===================== التسويق بالعمولة ===================== */
+  var AFS = { pending: 'بانتظار الموافقة', active: 'نشط', suspended: 'موقوف' };
+  var COMS = { accrued: 'مستحقة', approved: 'معتمدة', cancelled: 'ملغاة' };
+  var SRC = { link: 'رابط', code: 'رمز', staff: 'موظف', manual: 'يدوي' };
+
+  function affiliateView(container) {
+    container.innerHTML = '<div class="page-head"><h2>التسويق بالعمولة</h2></div><div id="af"></div>';
+    var box = container.querySelector('#af');
+    function load() {
+      Promise.all([api('aff.me'), api('aff.referrals'), api('aff.commissions')]).then(function (res) {
+        var d = res[0], refs = res[1], coms = res[2];
+        if (!d.has) {
+          box.innerHTML = '<div class="card"><h3>انضم كمسوق</h3><p>' + (d.can_apply ? 'شارك رابطك مع الآخرين، وعندما يسجّلون ويسددون رسوم الدورات تُحتسب لك عمولة تُضاف إلى محفظتك بعد اعتماد الإدارة.' : 'التسويق بالعمولة غير متاح لحسابك حاليًا.') + '</p>' +
+            (d.can_apply ? '<div class="field" style="max-width:260px"><label for="af-ref">رمز من دعاك (اختياري)</label><input id="af-ref" maxlength="12" dir="ltr"></div>' + btn('تقديم طلب الانضمام', 'data-apply', 'primary') : '') + '</div>';
+          box.onclick = function (ev) {
+            if (!ev.target.closest('[data-apply]')) return;
+            api('aff.apply', { ref: (box.querySelector('#af-ref') || {}).value || '' }).then(function (r) { toast(r.status === 'active' ? 'أصبحت مسوقًا. رمزك ' + r.code : 'أُرسل طلبك وبانتظار موافقة الإدارة.', 'ok'); load(); }).catch(fail);
+          };
+          return;
+        }
+        var a = d.affiliate, s = d.stats, link = a.link || '';
+        var msg = 'سجّل في منصتنا التعليمية من خلال رابطي: ' + link;
+        var team = Object.keys(s.team || {}).map(function (k) { return 'المستوى ' + k + ': ' + s.team[k]; }).join(' • ') || 'لا فريق بعد';
+        box.innerHTML = (a.status !== 'active' ? '<div class="card" style="margin-bottom:12px"><strong>حالة حسابك: ' + esc(AFS[a.status] || a.status) + '</strong> — لا تُحتسب العمولات إلا بعد التفعيل.</div>' : '') +
+          '<div class="cards">' + stat('إحالات فعّالة', s.referrals) + stat('عمولات مستحقة (بانتظار الاعتماد)', money(s.accrued)) + stat('عمولات معتمدة', money(s.approved)) + stat('رصيد المحفظة (' + d.currency + ')', money(s.balance)) + '</div>' +
+          '<div class="card" style="margin:12px 0"><h3>رابطك ورمزك</h3><div class="copy-box"><input readonly value="' + esc(link) + '" aria-label="رابط الإحالة"><button type="button" class="btn sm" data-cp="' + esc(link) + '">نسخ الرابط</button></div>' +
+          '<div class="copy-box" style="margin-top:8px"><input readonly value="' + esc(a.code) + '" aria-label="رمز الإحالة"><button type="button" class="btn sm" data-cp="' + esc(a.code) + '">نسخ الرمز</button></div>' +
+          '<div class="head-actions" style="margin-top:10px">' +
+          '<a class="btn sm" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(msg) + '">واتساب</a>' +
+          '<a class="btn sm" target="_blank" rel="noopener" href="https://t.me/share/url?url=' + encodeURIComponent(link) + '&text=' + encodeURIComponent('سجّل في منصتنا التعليمية') + '">تليجرام</a>' +
+          '<a class="btn sm" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link) + '">فيسبوك</a>' +
+          '<a class="btn sm" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=' + encodeURIComponent(link) + '&text=' + encodeURIComponent('سجّل في منصتنا التعليمية') + '">X</a></div>' +
+          '<p class="hint">نسب العمولة: ' + d.rates.map(function (r, i) { return 'المستوى ' + (i + 1) + ': ' + r + '%'; }).join(' • ') + (a.mode === 'custom' ? ' — نسبتك الخاصة للمستوى 1: ' + a.custom_rate + '%' : '') + '. فريقك: ' + esc(team) + '.</p>' +
+          '<p class="hint">تُحتسب العمولة على المبالغ المسدَّدة فعليًا فقط، وتُلغى إن أُلغيت الدفعة. لا عمولة على مجرد التسجيل أو الدعوة.</p></div>' +
+          '<h3 style="margin:10px 0">من سجّلوا عن طريقك</h3>' + table(['الطالب', 'المصدر', 'التاريخ', 'الحالة', 'عمولتك'], refs.map(function (r) {
+            return '<tr><td>' + esc(r.student) + '</td><td>' + esc(SRC[r.source] || r.source) + '</td><td>' + esc(r.created_at) + '</td><td>' + esc(r.status === 'active' ? 'فعّال' : 'ملغى') + '</td><td>' + money(r.commission) + '</td></tr>';
+          }), 'لا إحالات بعد. شارك رابطك!') +
+          '<h3 style="margin:16px 0 10px">عمولاتي</h3>' + table(['التاريخ', 'المستوى', 'الطالب', 'المبلغ المسدَّد', 'النسبة', 'العمولة', 'الحالة'], coms.map(function (c) {
+            return '<tr><td>' + esc(c.created_at) + '</td><td>' + esc(c.level) + '</td><td>' + esc(c.student) + '</td><td>' + money(c.base_amount) + '</td><td>' + esc(c.rate) + '%</td><td>' + money(c.amount) + '</td><td>' + badge(COMS, c.status) + '</td></tr>';
+          }), 'لا عمولات بعد.') +
+          '<p style="margin-top:12px">' + btn('سحب الرصيد من محفظتي', 'data-wallet', 'primary') + '</p>';
+        box.onclick = function (ev) {
+          var c = ev.target.closest('[data-cp]');
+          if (c) { copy(c.getAttribute('data-cp')); return; }
+          if (ev.target.closest('[data-wallet]')) U.navigate('wallet');
+        };
+      }).catch(function (e) { box.innerHTML = '<div class="empty"></div>'; box.querySelector('.empty').textContent = e.message; });
+    }
+    load();
+  }
+
+  function affiliateForm(row, reload) {
+    var v = row ? { status: row.status, mode: row.mode, custom_rate: row.custom_rate, parent_code: row.parent_code, notes: row.notes } : { status: 'active', mode: 'default' };
+    openForm({
+      title: row ? 'تعديل مسوق: ' + row.user_name : 'إضافة مسوق', values: v, help: 'marketing',
+      fields: (row ? [] : [{ key: 'user_ref', label: 'اسم مستخدم الحساب أو بريده', required: true, help: 'يجب أن يكون للمسوق حساب في المنصة (مسوق أو طالب أو مدرب…).' },
+                           { key: 'code', label: 'رمز إحالة مخصص (اختياري، 4 إلى 12 حرفًا/رقمًا)', maxlength: 12 }]).concat([
+        { key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(AFS) },
+        { key: 'mode', label: 'نمط العمولة', type: 'select', options: [{ value: 'default', label: 'حسب إعدادات الدورات والمستويات' }, { value: 'custom', label: 'نسبة خاصة لهذا المسوق' }] },
+        { key: 'custom_rate', label: 'النسبة الخاصة للمستوى 1 %', type: 'number', showIf: { key: 'mode', value: 'custom' } },
+        { key: 'parent_code', label: 'رمز المسوق الأعلى (من أحضره) — اختياري', maxlength: 12 },
+        { key: 'notes', label: 'ملاحظات', maxlength: 300 }
+      ]),
+      onSubmit: function (x) { if (row) x.id = row.id; return api(row ? 'affiliates.update' : 'affiliates.create', x); },
+      onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+    });
+  }
+
+  U.ext.assignReferrer = function (st) {
+    openForm({
+      title: 'ربط الطالب بمسوق: ' + st.full_name, submitLabel: 'ربط', values: { student_ref: st.student_no }, help: 'marketing',
+      fields: [{ key: 'student_ref', label: 'رقم الطالب', required: true }, { key: 'code', label: 'رمز المسوق', required: true, maxlength: 12 },
+               { key: 'reason', label: 'السبب (مطلوب عند تغيير مسوق سابق)', maxlength: 200 }],
+      onSubmit: function (v) { return api('referrals.assign', v); }, onDone: function () { toast('تم الربط.', 'ok'); }
+    });
+  };
+
+  var affiliatesAdminView = tabsView({
+    affiliates: { label: 'المسوقون', make: function () {
+      return listView({
+        title: 'المسوقون', listAction: 'affiliates.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث بالاسم أو الرمز',
+        columns: [{ key: 'user_name', label: 'المسوق', sortable: true }, { key: 'code', label: 'الرمز', sortable: true }, { key: 'parent_code', label: 'الأعلى' },
+          { key: 'status', label: 'الحالة', sortable: true, map: AFS, badge: true }, { key: 'referrals_count', label: 'الإحالات', sortable: true }, { key: 'team_count', label: 'الفريق' },
+          { key: 'accrued', label: 'مستحقة', sortable: true, fmt: function (r) { return money(r.accrued); } }, { key: 'approved', label: 'معتمدة', sortable: true, fmt: function (r) { return money(r.approved); } }],
+        filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(AFS) }],
+        headerActions: function () { return can('affiliates', 'c') ? [{ label: '+ إضافة مسوق', run: function (reload) { affiliateForm(null, reload); } }] : []; },
+        rowActions: function () {
+          var a = [];
+          if (can('affiliates', 'u')) a.push({ label: 'تعديل', run: function (r, reload) { affiliateForm(r, reload); } });
+          if (can('commissions', 'u') && ['system_admin', 'org_admin'].indexOf(state.user.role) >= 0) a.push({ label: 'اعتماد العمولات', run: function (r, reload) {
+            confirmBox('اعتماد كل العمولات المستحقة لـ ' + r.user_name + ' (' + money(r.accrued) + ') وإيداعها في محفظته؟', 'اعتماد').then(function (ok) {
+              if (ok) api('commissions.approve', { affiliate_id: r.id }).then(function (x) { toast('اعتُمدت ' + x.approved + ' عمولة بإجمالي ' + money(x.total), 'ok'); reload(); }).catch(fail);
+            });
+          } });
+          return a;
+        }
+      });
+    } },
+    referrals: { label: 'الإحالات', make: function () {
+      return listView({
+        title: 'الإحالات', listAction: 'referrals.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث بالطالب أو المسوق',
+        columns: [{ key: 'created_at', label: 'التاريخ', sortable: true }, { key: 'student_name', label: 'الطالب', sortable: true }, { key: 'student_no', label: 'رقم الطالب' },
+          { key: 'affiliate_code', label: 'رمز المسوق' }, { key: 'affiliate_name', label: 'المسوق' }, { key: 'source', label: 'المصدر', map: SRC }, { key: 'status', label: 'الحالة', badge: true, map: { active: 'فعّال', void: 'ملغى' } }],
+        filters: [{ key: 'status', label: 'كل الحالات', options: [{ value: 'active', label: 'فعّال' }, { value: 'void', label: 'ملغى' }] }],
+        headerActions: function () { return can('referrals', 'c') ? [{ label: '+ ربط طالب بمسوق', run: function () { U.ext.assignReferrer({ full_name: '', student_no: '' }); } }] : []; }
+      });
+    } },
+    commissions: { label: 'العمولات', make: function () {
+      return listView({
+        title: 'العمولات', listAction: 'commissions.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث بالمسوق أو الطالب',
+        columns: [{ key: 'created_at', label: 'التاريخ', sortable: true }, { key: 'affiliate_name', label: 'المسوق' }, { key: 'affiliate_code', label: 'الرمز' }, { key: 'student_name', label: 'الطالب' },
+          { key: 'level', label: 'المستوى', sortable: true }, { key: 'base_amount', label: 'المسدَّد', fmt: function (r) { return money(r.base_amount); } }, { key: 'rate', label: 'النسبة %' },
+          { key: 'amount', label: 'العمولة', sortable: true, fmt: function (r) { return money(r.amount); } }, { key: 'status', label: 'الحالة', sortable: true, map: COMS, badge: true }],
+        filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(COMS) }]
+      });
+    } }
+  }, { title: 'المسوقون والعمولات' });
+
+  /* ===================== أولياء الأمور ===================== */
+  function guardianForm(st, row, own, done) {
+    var v = row ? { full_name: row.full_name, relation: row.relation, phone: row.phone, email: row.email, is_primary: String(row.is_primary) === '1', can_view: String(row.can_view) === '1', notes: row.notes } : { can_view: true };
+    openForm({
+      title: row ? 'تعديل ولي أمر' : 'إضافة ولي أمر', values: v,
+      fields: [{ key: 'full_name', label: 'اسم ولي الأمر', required: true, maxlength: 100 }, { key: 'relation', label: 'صلة القرابة', type: 'lookup', lookup: 'relations' },
+               { key: 'phone', label: 'الهاتف (واتساب)', type: 'phone', maxlength: 20 }, { key: 'email', label: 'البريد الإلكتروني', type: 'email', maxlength: 120 },
+               { key: 'is_primary', label: 'ولي الأمر الأساسي', type: 'checkbox' }, { key: 'can_view', label: 'يُسمح له بمتابعة الطالب (الحضور والدرجات) عند تفعيل بوابة أولياء الأمور', type: 'checkbox' },
+               { key: 'notes', label: 'ملاحظات', maxlength: 300 }],
+      onSubmit: function (x) {
+        if (row) x.id = row.id;
+        if (own) return api('portal.guardianSave', x);
+        if (!row) x.student_id = st.id;
+        return api(row ? 'guardians.update' : 'guardians.create', x);
+      },
+      onDone: function () { toast('تم الحفظ.', 'ok'); done(); }
+    });
+  }
+  function guardiansModal(st, own) {
+    api(own ? 'portal.guardians' : 'guardians.list', own ? {} : { filters: { student_id: st.id }, pageSize: 50 }).then(function (d) {
+      var rows = own ? d : d.rows, node = document.createElement('div');
+      var canEdit = own || can('guardians', 'u'), canAdd = own || can('guardians', 'c');
+      node.innerHTML = (canAdd ? '<p>' + btn('+ إضافة ولي أمر', 'data-add', 'primary') + '</p>' : '') + table(['الاسم', 'الصلة', 'الهاتف', 'البريد', 'أساسي', 'الحالة', ''], rows.map(function (g, i) {
+        return '<tr><td>' + esc(g.full_name) + '</td><td>' + esc(U.lookupLabel('relations', g.relation) || '—') + '</td><td dir="ltr">' + esc(dash(g.phone)) + '</td><td>' + esc(dash(g.email)) + '</td><td>' + (String(g.is_primary) === '1' ? '✓' : '') + '</td><td>' + badge(ACT, g.status) + '</td><td>' + (canEdit ? btn('تعديل', 'data-e="' + i + '"') : '') + '</td></tr>';
+      }), 'لا يوجد أولياء أمور مسجلون.');
+      var m = openModal({ title: 'أولياء الأمور' + (own ? '' : ' — ' + st.full_name), node: node, wide: true });
+      node.addEventListener('click', function (e) {
+        var add = e.target.closest('[data-add]'), ed = e.target.closest('[data-e]');
+        if (!add && !ed) return;
+        m.close();
+        U.loadLookups().then(function () { guardianForm(st, ed ? rows[Number(ed.getAttribute('data-e'))] : null, own, function () { guardiansModal(st, own); }); });
+      });
+    }).catch(fail);
+  }
+  U.ext.openGuardians = function (st) { U.loadLookups().then(function () { guardiansModal(st, false); }); };
+  U.ext.myGuardians = function () { U.loadLookups().then(function () { guardiansModal(null, true); }); };
+
+  /* ===================== القوائم المرجعية ===================== */
+  var LK_TYPES = { countries: 'الدول', governorates: 'المحافظات والولايات', cities: 'المدن والمديريات', qualifications: 'المؤهلات العلمية', specialties: 'التخصصات', universities: 'الجامعات',
+                   id_types: 'أنواع الهوية', relations: 'صلات القرابة', genders: 'الجنس', marital: 'الحالة الاجتماعية', job_titles: 'المسميات الوظيفية' };
+  function lookupAddForm(reload) {
+    openForm({
+      title: 'إضافة عنصر إلى قائمة', values: { type: 'specialties' }, help: 'register',
+      fields: [
+        { key: 'type', label: 'القائمة', type: 'select', required: true, options: optionsFrom(LK_TYPES) },
+        { key: 'parent_c', label: 'الدولة', type: 'lookup', lookup: 'countries', showIf: { key: 'type', value: 'governorates' }, allowAdd: false },
+        { key: 'parent_g', label: 'المحافظة/الولاية', type: 'lookup', lookup: 'governorates', showIf: { key: 'type', value: 'cities' }, allowAdd: false },
+        { key: 'label_ar', label: 'الاسم بالعربية', required: true, maxlength: 100 }, { key: 'label_en', label: 'الاسم بالإنجليزية (اختياري)', maxlength: 100 },
+        { key: 'dial', label: 'مفتاح الهاتف للدول (مثل +967)', maxlength: 6, showIf: { key: 'type', value: 'countries' } },
+        { key: 'phone_len', label: 'عدد أرقام الهاتف المعتاد', type: 'number', showIf: { key: 'type', value: 'countries' } }
+      ],
+      onSubmit: function (v) {
+        var p = { type: v.type, label_ar: v.label_ar, label_en: v.label_en, parent: v.type === 'governorates' ? v.parent_c : v.type === 'cities' ? v.parent_g : '' };
+        if (v.type === 'countries' && (v.dial || v.phone_len)) p.extra = { dial: v.dial, phone_len: v.phone_len };
+        return api('lookups.add', p);
+      },
+      onDone: function () { toast('تمت الإضافة.', 'ok'); invalidateLookups(); reload(); }
+    });
+  }
+  var lookupsView = listView({
+    title: 'القوائم المرجعية', listAction: 'lookups.list', defaultSort: 'type', searchPlaceholder: 'ابحث بالاسم',
+    columns: [{ key: 'type', label: 'القائمة', sortable: true, map: LK_TYPES }, { key: 'label_ar', label: 'الاسم', sortable: true }, { key: 'label_en', label: 'بالإنجليزية' },
+              { key: 'parent', label: 'الأصل' }, { key: 'key', label: 'الرمز' }, { key: 'status', label: 'الحالة', sortable: true, map: ACT, badge: true }],
+    filters: [{ key: 'type', label: 'كل القوائم', options: optionsFrom(LK_TYPES) }, { key: 'status', label: 'كل الحالات', options: optionsFrom(ACT) }],
+    headerActions: function () {
+      var h = [];
+      if (can('lookups', 'c')) {
+        h.push({ label: '+ إضافة عنصر', run: function (reload) { U.loadLookups().then(function () { lookupAddForm(reload); }); } });
+        h.push({ label: 'تحميل البيانات القياسية', run: function (reload) { api('lookups.seed').then(function (r) { toast('أُضيف ' + r.added + ' عنصر.', 'ok'); invalidateLookups(); reload(); }).catch(fail); } });
+      }
+      return h;
+    },
+    rowActions: function (row) {
+      if (!can('lookups', 'u')) return [];
+      return [{ label: 'تعديل', run: function (r, reload) {
+        var ex = {}; try { ex = r.extra ? JSON.parse(r.extra) : {}; } catch (e) { ex = {}; }
+        openForm({ title: 'تعديل عنصر', values: { label_ar: r.label_ar, label_en: r.label_en, sort_order: r.sort_order, dial: ex.dial, phone_len: ex.phone_len },
+          fields: [{ key: 'label_ar', label: 'الاسم', required: true, maxlength: 100 }, { key: 'label_en', label: 'بالإنجليزية', maxlength: 100 }, { key: 'sort_order', label: 'الترتيب', type: 'number' }]
+            .concat(r.type === 'countries' ? [{ key: 'dial', label: 'مفتاح الهاتف', maxlength: 6 }, { key: 'phone_len', label: 'عدد أرقام الهاتف', type: 'number' }] : []),
+          onSubmit: function (v) { var p = { id: r.id, label_ar: v.label_ar, label_en: v.label_en, sort_order: v.sort_order }; if (r.type === 'countries') p.extra = { dial: v.dial, phone_len: v.phone_len }; return api('lookups.update', p); },
+          onDone: function () { toast('تم الحفظ.', 'ok'); invalidateLookups(); reload(); } });
+      } }, { label: 'الحالة', run: function (r, reload) {
+        openForm({ title: 'حالة العنصر', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ACT) }],
+          onSubmit: function (v) { return api('lookups.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); invalidateLookups(); reload(); } });
+      } }];
+    }
+  });
+
+  /* ===================== الحقول المخصصة ===================== */
+  var FTYPES = { text: 'نص قصير', textarea: 'نص طويل', number: 'رقم', date: 'تاريخ', select: 'قائمة منسدلة', lookup: 'قائمة مرجعية (قابلة للإضافة)', multiselect: 'اختيار متعدد', checkbox: 'مربع اختيار', url: 'رابط', percent: 'نسبة %', money: 'مبلغ' };
+  var ENT = { students: 'الطلاب', teachers: 'المدربون' };
+  function fieldDefForm(row, reload) {
+    var v = row ? JSON.parse(JSON.stringify(row)) : { entity: 'students', ftype: 'text', sort_order: 100, status: 'active' };
+    ['required', 'in_registration', 'self_editable'].forEach(function (k) { v[k] = String(v[k]) === '1'; });
+    openForm({
+      title: row ? 'تعديل حقل: ' + row.label : 'حقل مخصص جديد', values: v,
+      fields: (row ? [] : [{ key: 'entity', label: 'يظهر في ملف', type: 'select', options: optionsFrom(ENT) }, { key: 'fkey', label: 'المفتاح (إنجليزي صغير وأرقام و _ — لا يتغير لاحقًا)', required: true, maxlength: 31 },
+                           { key: 'ftype', label: 'النوع', type: 'select', options: optionsFrom(FTYPES) }]).concat([
+        { key: 'label', label: 'عنوان الحقل', required: true, maxlength: 100 },
+        { key: 'lookup_type', label: 'القائمة المرجعية (للنوع قائمة مرجعية)', type: 'select', options: [{ value: '', label: '—' }].concat(optionsFrom(LK_TYPES)) },
+        { key: 'options', label: 'الخيارات للقوائم المنسدلة (كل خيار في سطر)', type: 'textarea', maxlength: 2000 },
+        { key: 'depends_on', label: 'يعتمد على حقل آخر (مفتاحه) — مثل المحافظة تعتمد على الدولة', maxlength: 31 },
+        { key: 'required', label: 'إلزامي (عند إنشاء السجل أو التسجيل العام)', type: 'checkbox' }, { key: 'in_registration', label: 'يظهر في التسجيل العام', type: 'checkbox' },
+        { key: 'self_editable', label: 'يعدّله صاحب الحساب من ملفه', type: 'checkbox' }, { key: 'help', label: 'تعليمات تظهر بجانب الحقل', maxlength: 300 },
+        { key: 'sort_order', label: 'الترتيب', type: 'number' }
+      ]),
+      onSubmit: function (x) { if (row) x.id = row.id; return api(row ? 'fields.update' : 'fields.create', x); },
+      onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+    });
+  }
+  var fieldsAdminView = listView({
+    title: 'الحقول المخصصة', listAction: 'fields.list', defaultSort: 'sort_order', defaultDir: 'asc', searchPlaceholder: 'ابحث بعنوان الحقل',
+    columns: [{ key: 'entity', label: 'الملف', map: ENT, sortable: true }, { key: 'label', label: 'العنوان', sortable: true }, { key: 'ftype', label: 'النوع', map: FTYPES },
+              { key: 'required', label: 'إلزامي', fmt: function (r) { return String(r.required) === '1' ? 'نعم' : ''; } },
+              { key: 'in_registration', label: 'في التسجيل', fmt: function (r) { return String(r.in_registration) === '1' ? 'نعم' : ''; } },
+              { key: 'status', label: 'الحالة', sortable: true, map: ACT, badge: true }],
+    filters: [{ key: 'entity', label: 'كل الملفات', options: optionsFrom(ENT) }, { key: 'status', label: 'كل الحالات', options: optionsFrom(ACT) }],
+    headerActions: function () {
+      var h = [];
+      if (can('field_defs', 'c')) {
+        h.push({ label: '+ حقل جديد', run: function (reload) { fieldDefForm(null, reload); } });
+        h.push({ label: 'إضافة الحقول القياسية', run: function (reload) { api('fields.seed').then(function (r) { toast('أُضيف ' + r.added + ' حقل.', 'ok'); reload(); }).catch(fail); } });
+      }
+      return h;
+    },
+    rowActions: function () {
+      if (!can('field_defs', 'u')) return [];
+      return [{ label: 'تعديل', run: function (r, reload) { fieldDefForm(r, reload); } },
+              { label: 'الحالة', run: function (r, reload) { openForm({ title: 'حالة الحقل', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة (التعطيل يُبقي القيم القديمة محفوظة)', type: 'select', options: optionsFrom(ACT) }],
+                onSubmit: function (v) { return api('fields.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); reload(); } }); } }];
+    }
+  });
+
+  /* ===================== إدارة التعليمات ===================== */
+  function helpForm(row, reload) {
+    openForm({
+      title: row ? 'تعديل شرح' : 'موضوع شرح جديد', values: row || { sort_order: 100 },
+      fields: (row ? [] : [{ key: 'topic', label: 'المفتاح (إنجليزي صغير)', required: true, maxlength: 40, help: 'يُستخدم لربط الشرح بالشاشات والنماذج.' }]).concat([
+        { key: 'title', label: 'العنوان', required: true, maxlength: 120 }, { key: 'body', label: 'الشرح النصي', type: 'textarea', rows: 8, maxlength: 5000 },
+        { key: 'video_url', label: 'رابط فيديو يوتيوب (اختياري)', maxlength: 300, help: 'يظهر داخل نافذة الشرح بطريقة آمنة.' }, { key: 'sort_order', label: 'الترتيب', type: 'number' }]),
+      onSubmit: function (v) { if (row) v.id = row.id; return api(row ? 'help.update' : 'help.create', v); },
+      onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+    });
+  }
+  var helpAdminView = listView({
+    title: 'التعليمات والشروحات', listAction: 'help.list', defaultSort: 'sort_order', defaultDir: 'asc', searchPlaceholder: 'ابحث في الشروحات',
+    columns: [{ key: 'topic', label: 'المفتاح', sortable: true }, { key: 'title', label: 'العنوان', sortable: true }, { key: 'video_url', label: 'فيديو', fmt: function (r) { return r.video_url ? 'نعم' : ''; } },
+              { key: 'status', label: 'الحالة', sortable: true, map: ACT, badge: true }],
+    headerActions: function () {
+      var h = [];
+      if (can('help_topics', 'c')) {
+        h.push({ label: '+ موضوع جديد', run: function (reload) { helpForm(null, reload); } });
+        h.push({ label: 'تحميل الشروحات القياسية', run: function (reload) { api('help.seed').then(function (r) { toast('أُضيف ' + r.added + ' موضوع.', 'ok'); reload(); }).catch(fail); } });
+      }
+      return h;
+    },
+    rowActions: function () {
+      var a = [{ label: 'عرض', run: function (r) { U.showHelp(r.topic); } }];
+      if (can('help_topics', 'u')) {
+        a.push({ label: 'تعديل', run: function (r, reload) { helpForm(r, reload); } });
+        a.push({ label: 'الحالة', run: function (r, reload) { openForm({ title: 'حالة الموضوع', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ACT) }],
+          onSubmit: function (v) { return api('help.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); reload(); } }); } });
+      }
+      return a;
+    }
+  });
+
+  /* ===================== المؤسسات (المنصة الرئيسية) ===================== */
+  var ORGS = { active: 'فعّالة', suspended: 'موقوفة' };
+  function orgForm(reload) {
+    openForm({
+      title: 'مؤسسة جديدة', submitLabel: 'إنشاء (قد يستغرق دقيقة)', help: 'register',
+      fields: [{ key: 'name', label: 'اسم المؤسسة', required: true, maxlength: 100 }, { key: 'code', label: 'رمز المؤسسة (إنجليزي صغير وأرقام وشرطة)', required: true, maxlength: 31, help: 'يظهر في رابط المؤسسة ولا يتغير لاحقًا.' },
+               { key: 'owner_name', label: 'اسم مدير المؤسسة', required: true, maxlength: 100 }, { key: 'owner_email', label: 'بريد المدير', type: 'email', maxlength: 120 }, { key: 'owner_phone', label: 'هاتف المدير', type: 'phone', maxlength: 20 },
+               { key: 'username', label: 'اسم مستخدم المدير', required: true, maxlength: 40 }, { key: 'password', label: 'كلمة مرور المدير (10 أحرف فأكثر مع أرقام)', type: 'password', required: true, maxlength: 200 },
+               { key: 'plan', label: 'الباقة', maxlength: 30 }],
+      onSubmit: function (v) { return api('orgs.create', v); }, onDone: function () { toast('أُنشئت المؤسسة بجدولها الخاص.', 'ok'); reload(); }
+    });
+  }
+  var orgsView = listView({
+    title: 'المؤسسات', listAction: 'orgs.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث بالاسم أو الرمز',
+    columns: [{ key: 'name', label: 'المؤسسة', sortable: true }, { key: 'code', label: 'الرمز', sortable: true }, { key: 'owner_name', label: 'المدير' }, { key: 'plan', label: 'الباقة' },
+              { key: 'status', label: 'الحالة', sortable: true, map: ORGS, badge: true }, { key: 'created_at', label: 'أُنشئت', sortable: true }],
+    filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(ORGS) }],
+    headerActions: function () { return can('organizations', 'c') ? [{ label: '+ مؤسسة جديدة', run: function (reload) { orgForm(reload); } }] : []; },
+    rowActions: function () {
+      var a = [{ label: 'رابط الدخول', run: function (r) {
+        var n = document.createElement('div');
+        n.innerHTML = '<p>رابط دخول المؤسسة:</p><div class="copy-box"><input readonly value="' + esc(r.login_url) + '" aria-label="الرابط"><button type="button" class="btn sm" data-cp>نسخ</button></div>' +
+          '<p class="hint">في Blogger/البوابة: ضع <code>window.SCI_ORG = \'' + esc(r.code) + '\'</code> في الإعداد لتصبح هذه الصفحة مؤسستك الافتراضية.</p>' + (r.spreadsheet_url ? '<p><a href="' + esc(r.spreadsheet_url) + '" target="_blank" rel="noopener">فتح جدول المؤسسة</a></p>' : '');
+        openModal({ title: r.name, node: n });
+        n.querySelector('[data-cp]').addEventListener('click', function () { copy(r.login_url); });
+      } }, { label: 'إحصاء', run: function (r) {
+        api('orgs.stats', { id: r.id }).then(function (s) { openModal({ title: 'إحصاء ' + r.name, html: '<div class="cards">' + stat('الطلاب', s.students) + stat('المدربون', s.teachers) + stat('الدورات', s.courses) + stat('المستخدمون', s.users) + stat('الفواتير', s.invoices) + '</div>' }); }).catch(fail);
+      } }];
+      if (can('organizations', 'u')) a.push({ label: 'الحالة والباقة', run: function (r, reload) {
+        openForm({ title: 'تعديل مؤسسة', values: { name: r.name, status: r.status, plan: r.plan, notes: r.notes },
+          fields: [{ key: 'name', label: 'الاسم', required: true, maxlength: 100 }, { key: 'status', label: 'الحالة (الإيقاف يمنع الدخول ويُبقي البيانات)', type: 'select', options: optionsFrom(ORGS) }, { key: 'plan', label: 'الباقة', maxlength: 30 }, { key: 'notes', label: 'ملاحظات', maxlength: 300 }],
+          onSubmit: function (v) { v.id = r.id; return api('orgs.update', v); }, onDone: function () { toast('تم الحفظ.', 'ok'); reload(); } });
+      } });
+      return a;
+    }
+  });
+
+  /* ===================== تنزيل الملفات والفصل المباشر ===================== */
+  function downloadB64(name, mime, data) {
+    try {
+      var bin = atob(data), n = bin.length, bytes = new Uint8Array(n);
+      for (var i = 0; i < n; i++) bytes[i] = bin.charCodeAt(i);
+      var url = URL.createObjectURL(new Blob([bytes], { type: mime || 'application/octet-stream' })), a = document.createElement('a');
+      a.href = url; a.download = name || 'file'; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+    } catch (e) { toast('تعذر تنزيل الملف.', 'error'); }
+  }
+  U.ext.downloadB64 = downloadB64;
+
+  U.ext.openClass = function (url, title) {
+    if (String(url).indexOf('https://meet.jit.si/') !== 0) { toast('رابط الفصل غير مسموح.', 'error'); return; }
+    var name = (state.user && state.user.full_name) || 'مشارك';
+    var src = url + '#config.prejoinPageEnabled=false&userInfo.displayName=' + encodeURIComponent(JSON.stringify(name));
+    var n = document.createElement('div');
+    n.innerHTML = '<p class="hint">فعّل الميكروفون والكاميرا من أيقونات الفصل، واستخدم زر رفع اليد قبل الكلام والمحادثة للأسئلة. اسمح للمتصفح باستخدام الكاميرا والميكروفون عند الطلب.</p>' +
+      '<div class="video-wrap" style="aspect-ratio:auto;height:68vh"><iframe src="' + esc(src) + '" title="' + esc(title || 'الفصل المباشر') + '" allow="camera; microphone; fullscreen; display-capture; autoplay; clipboard-write"></iframe></div>' +
+      '<p><a class="btn sm" target="_blank" rel="noopener" href="' + esc(url) + '">فتح في نافذة مستقلة</a> ' + helpBtn('live_class') + '</p>';
+    openModal({ title: title || 'الفصل المباشر', node: n, wide: true });
+  };
+  function helpBtn(t) { return U.helpBtn(t); }
+
+  /* ===================== المستندات الخاصة ===================== */
+  var DOC_TYPES = { id_card: 'بطاقة شخصية', passport: 'جواز سفر', high_school: 'شهادة الثانوية', qualification: 'مؤهل علمي', cv: 'سيرة ذاتية', contract: 'عقد', license: 'ترخيص/سجل تجاري', photo: 'صورة شخصية', receipt: 'إيصال سداد', other: 'أخرى' };
+  var DOC_ST = { pending: 'قيد المراجعة', approved: 'معتمد', rejected: 'مرفوض', withdrawn: 'مسحوب' };
+  function readFile(file) {
+    return new Promise(function (resolve, reject) {
+      if (!file) { reject({ message: 'اختر ملفًا.' }); return; }
+      if (file.size > 3 * 1024 * 1024) { reject({ message: 'الحد الأقصى لحجم الملف 3 ميغابايت.' }); return; }
+      var r = new FileReader();
+      r.onload = function () { resolve({ name: file.name, data: String(r.result).split(',')[1] || '' }); };
+      r.onerror = function () { reject({ message: 'تعذر قراءة الملف.' }); };
+      r.readAsDataURL(file);
+    });
+  }
+  function docUploadModal(cfg, done) {
+    var n = document.createElement('div');
+    n.innerHTML = '<form id="du" novalidate><div class="field"><label for="du-t">نوع المستند *</label><select id="du-t">' + Object.keys(DOC_TYPES).map(function (k) { return '<option value="' + k + '">' + esc(DOC_TYPES[k]) + '</option>'; }).join('') + '</select></div>' +
+      '<div class="field"><label for="du-n">عنوان (اختياري)</label><input id="du-n" maxlength="100"></div>' +
+      '<div class="field"><label for="du-f">الملف * (pdf, صور, docx… حتى 3 ميغابايت)</label><input id="du-f" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx"><div class="hint">تأكد أن الصورة واضحة ومقروءة بالكامل.</div></div>' +
+      '<div class="form-error" hidden></div><div class="form-actions"><button type="submit" class="btn primary">رفع</button><button type="button" class="btn" data-close>إلغاء</button></div></form>';
+    var m = openModal({ title: 'رفع مستند' + (cfg.name ? ' — ' + cfg.name : ''), node: n }), busy = false;
+    n.querySelector('#du').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (busy) return;
+      var box = n.querySelector('.form-error'); box.hidden = true; busy = true;
+      readFile(n.querySelector('#du-f').files[0]).then(function (f) {
+        var p = { doc_type: n.querySelector('#du-t').value, title: n.querySelector('#du-n').value, file: f };
+        if (cfg.mode === 'staff') { p.owner_type = cfg.owner_type; p.owner_id = cfg.owner_id; }
+        return api('documents.upload', p);
+      }).then(function () { m.close(); toast('تم رفع المستند وهو قيد المراجعة.', 'ok'); done(); })
+        .catch(function (err) { box.textContent = err.message; box.hidden = false; busy = false; });
+    });
+  }
+  function docsPanel(box, cfg) {
+    var reviewer = ['system_admin', 'org_admin', 'registrar'].indexOf(state.user.role) >= 0;
+    function load() {
+      api(cfg.mode === 'self' ? 'documents.mine' : 'documents.list', cfg.mode === 'self' ? {} : { owner_type: cfg.owner_type, owner_id: cfg.owner_id }).then(function (rows) {
+        var canUp = cfg.mode === 'self' || can('documents', 'c');
+        box.innerHTML = (canUp ? '<p>' + btn('+ رفع مستند', 'data-up', 'primary') + ' ' + helpBtn('documents') + '</p>' : '') + table(['النوع', 'العنوان', 'الملف', 'الحجم', 'الحالة', 'التاريخ', ''], rows.map(function (d, i) {
+          var acts = btn('تنزيل', 'data-dl="' + i + '"');
+          if (d.status !== 'withdrawn' && (cfg.mode === 'self' ? d.status !== 'approved' : can('documents', 'u'))) acts += btn('سحب', 'data-wd="' + i + '"');
+          if (cfg.mode !== 'self' && reviewer && d.status === 'pending') acts += btn('اعتماد', 'data-ap="' + i + '"', 'primary') + btn('رفض', 'data-rj="' + i + '"');
+          return '<tr><td>' + esc(d.type_label) + '</td><td>' + esc(d.title) + '</td><td>' + esc(d.file_name) + '</td><td>' + Math.round(d.file_size / 1024) + ' KB</td><td>' + badge(DOC_ST, d.status) + (d.review_note ? '<div class="hint">' + esc(d.review_note) + '</div>' : '') + '</td><td>' + esc(String(d.created_at).substring(0, 10)) + '</td><td><div class="row-actions">' + (d.status === 'withdrawn' ? '' : acts) + '</div></td></tr>';
+        }), 'لا توجد مستندات.');
+        box.onclick = function (ev) {
+          var up = ev.target.closest('[data-up]');
+          if (up) { docUploadModal(cfg, load); return; }
+          var el = ev.target.closest('[data-dl],[data-wd],[data-ap],[data-rj]');
+          if (!el) return;
+          var idx = Number(el.getAttribute('data-dl') || el.getAttribute('data-wd') || el.getAttribute('data-ap') || el.getAttribute('data-rj')), d = rows[idx];
+          if (el.hasAttribute('data-dl')) api('documents.download', { id: d.id }).then(function (f) { downloadB64(f.name, f.mime, f.data); }).catch(fail);
+          else if (el.hasAttribute('data-wd')) confirmBox('سحب هذا المستند؟', 'سحب').then(function (ok) { if (ok) api('documents.withdraw', { id: d.id }).then(function () { toast('تم السحب.', 'ok'); load(); }).catch(fail); });
+          else if (el.hasAttribute('data-ap')) api('documents.review', { id: d.id, status: 'approved' }).then(function () { toast('تم الاعتماد.', 'ok'); load(); }).catch(fail);
+          else openForm({ title: 'رفض المستند', submitLabel: 'رفض', fields: [{ key: 'note', label: 'سبب الرفض (يصل لصاحب المستند)', type: 'textarea', required: true, maxlength: 300 }],
+            onSubmit: function (v) { return api('documents.review', { id: d.id, status: 'rejected', note: v.note }); }, onDone: function () { toast('تم الرفض.', 'ok'); load(); } });
+        };
+      }).catch(function (e) { box.innerHTML = '<div class="empty"></div>'; box.querySelector('.empty').textContent = e.message; });
+    }
+    load();
+  }
+  function myDocsView(container) {
+    container.innerHTML = '<div class="page-head"><h2>مستنداتي</h2></div><div id="dc"></div>';
+    docsPanel(container.querySelector('#dc'), { mode: 'self' });
+  }
+  U.ext.openDocuments = function (type, rec) {
+    var n = document.createElement('div'), box = document.createElement('div');
+    n.appendChild(box);
+    openModal({ title: 'مستندات: ' + rec.full_name, node: n, wide: true });
+    docsPanel(box, { mode: 'staff', owner_type: type, owner_id: rec.id, name: rec.full_name });
+  };
+
+  /* ===================== الإعلانات والصفحات والقسائم ===================== */
+  function mdToHtml(src) {
+    var lines = String(src || '').split('\n'), out = [], inList = false;
+    function inline(t) {
+      return esc(t).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (m, a, u) { return '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + a + '</a>'; });
+    }
+    lines.forEach(function (l) {
+      var t = l.trim();
+      if (/^- /.test(t)) { if (!inList) { out.push('<ul>'); inList = true; } out.push('<li>' + inline(t.slice(2)) + '</li>'); return; }
+      if (inList) { out.push('</ul>'); inList = false; }
+      if (/^## /.test(t)) out.push('<h4>' + inline(t.slice(3)) + '</h4>');
+      else if (/^# /.test(t)) out.push('<h3>' + inline(t.slice(2)) + '</h3>');
+      else if (t) out.push('<p>' + inline(t) + '</p>');
+    });
+    if (inList) out.push('</ul>');
+    return out.join('');
+  }
+  U.ext.mdToHtml = mdToHtml;
+
+  function announcementsView(container) {
+    container.innerHTML = '<div class="page-head"><h2>الإعلانات</h2></div><div id="an"></div>';
+    var box = container.querySelector('#an');
+    api('announcements.mine').then(function (rows) {
+      box.innerHTML = rows.length ? rows.map(function (a) {
+        return '<div class="card" style="margin-bottom:10px"><h3>' + (a.pinned ? '📌 ' : '') + esc(a.title) + ' <span class="hint">' + esc(a.created_at) + '</span></h3><div class="prose-sm">' + esc(a.body) + '</div></div>';
+      }).join('') : '<div class="card empty">لا توجد إعلانات.</div>';
+    }).catch(function (e) { box.innerHTML = '<div class="empty"></div>'; box.querySelector('.empty').textContent = e.message; });
+  }
+  var ANS = { all: 'الجميع', students: 'الطلاب', teachers: 'المدربون', course: 'طلاب دورة' }, ANST = { draft: 'مسودة', published: 'منشور', archived: 'مؤرشف' };
+  function announceForm(row, reload) {
+    api('courses.list', { pageSize: 100, sortBy: 'name', sortDir: 'asc' }).then(function (c) {
+      var opts = [{ value: '', label: '—' }].concat(c.rows.map(function (x) { return { value: x.id, label: x.name }; }));
+      openForm({
+        title: row ? 'تعديل إعلان' : 'إعلان جديد', values: row || { scope: 'all', status: 'published' },
+        fields: [{ key: 'title', label: 'العنوان', required: true, maxlength: 150 }, { key: 'body', label: 'النص', type: 'textarea', rows: 6, required: true, maxlength: 3000 },
+                 { key: 'scope', label: 'الجمهور (يصله إشعار عند النشر)', type: 'select', options: optionsFrom(ANS) }, { key: 'course_id', label: 'الدورة', type: 'select', options: opts, showIf: { key: 'scope', value: 'course' } },
+                 { key: 'pinned', label: 'تثبيت في الأعلى', type: 'checkbox' }, { key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ANST) }],
+        onSubmit: function (v) { if (row) v.id = row.id; return api('announcements.save', v); }, onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+      });
+    }).catch(fail);
+  }
+  var announcementsAdminView = listView({
+    title: 'إدارة الإعلانات', listAction: 'announcements.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث في الإعلانات',
+    columns: [{ key: 'title', label: 'العنوان', sortable: true }, { key: 'scope', label: 'الجمهور', map: ANS }, { key: 'course_name', label: 'الدورة' }, { key: 'status', label: 'الحالة', sortable: true, map: ANST, badge: true }, { key: 'created_at', label: 'التاريخ', sortable: true }],
+    filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(ANST) }, { key: 'scope', label: 'كل الجماهير', options: optionsFrom(ANS) }],
+    headerActions: function () { return can('announcements', 'c') ? [{ label: '+ إعلان', run: function (reload) { announceForm(null, reload); } }] : []; },
+    rowActions: function () {
+      if (!can('announcements', 'u')) return [];
+      return [{ label: 'تعديل', run: function (r, reload) { announceForm(r, reload); } },
+              { label: 'الحالة', run: function (r, reload) { openForm({ title: 'حالة الإعلان', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ANST) }],
+                onSubmit: function (v) { return api('announcements.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); reload(); } }); } }];
+    }
+  });
+
+  var PGK = { page: 'صفحة', link: 'رابط خارجي' }, PGA = { public: 'عامة للزوار', login: 'لكل من سجّل الدخول', student: 'للطلاب', teacher: 'للمدربين' };
+  function pageForm(row, reload) {
+    var v = row ? JSON.parse(JSON.stringify(row)) : { kind: 'page', audience: 'public', status: 'draft', sort_order: 100 };
+    v.show_in_nav = String(v.show_in_nav) === '1';
+    openForm({
+      title: row ? 'تعديل صفحة' : 'صفحة جديدة', values: v,
+      fields: (row ? [] : [{ key: 'slug', label: 'مفتاح الصفحة (إنجليزي صغير وأرقام وشرطة) — يظهر في الرابط', required: true, maxlength: 41 }]).concat([
+        { key: 'title', label: 'العنوان', required: true, maxlength: 120 }, { key: 'nav_label', label: 'اسم الصفحة في القائمة (اختياري)', maxlength: 40 },
+        { key: 'kind', label: 'النوع', type: 'select', options: optionsFrom(PGK) }, { key: 'url', label: 'الرابط (https)', maxlength: 300, showIf: { key: 'kind', value: 'link' } },
+        { key: 'body', label: 'المحتوى', type: 'textarea', rows: 10, maxlength: 20000, help: 'تنسيق بسيط: # عنوان، ## عنوان فرعي، - نقطة، **غامق**، [نص](https://رابط). لا يُسمح بـ HTML.', showIf: { key: 'kind', value: 'page' } },
+        { key: 'show_in_nav', label: 'يظهر في قائمة الموقع', type: 'checkbox' }, { key: 'audience', label: 'الجمهور', type: 'select', options: optionsFrom(PGA) },
+        { key: 'sort_order', label: 'الترتيب', type: 'number' }, { key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ANST) }]),
+      onSubmit: function (x) { if (row) x.id = row.id; return api(row ? 'pages.update' : 'pages.create', x); }, onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+    });
+  }
+  var pagesAdminView = listView({
+    title: 'صفحات الموقع', listAction: 'pages.list', defaultSort: 'sort_order', defaultDir: 'asc', searchPlaceholder: 'ابحث في الصفحات',
+    columns: [{ key: 'title', label: 'العنوان', sortable: true }, { key: 'slug', label: 'المفتاح' }, { key: 'kind', label: 'النوع', map: PGK }, { key: 'audience', label: 'الجمهور', map: PGA },
+              { key: 'status', label: 'الحالة', sortable: true, map: ANST, badge: true }, { key: 'sort_order', label: 'الترتيب', sortable: true }],
+    filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(ANST) }, { key: 'audience', label: 'كل الجماهير', options: optionsFrom(PGA) }],
+    headerActions: function () { return can('site_pages', 'c') ? [{ label: '+ صفحة جديدة', run: function (reload) { pageForm(null, reload); } }] : []; },
+    rowActions: function () {
+      if (!can('site_pages', 'u')) return [];
+      return [{ label: 'تعديل', run: function (r, reload) { pageForm(r, reload); } },
+              { label: 'الحالة', run: function (r, reload) { openForm({ title: 'حالة الصفحة', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ANST) }],
+                onSubmit: function (v) { return api('pages.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); reload(); } }); } }];
+    }
+  });
+  function infoPagesView(container) {
+    container.innerHTML = '<div class="page-head"><h2>معلومات المؤسسة</h2></div><div id="ip"></div>';
+    var box = container.querySelector('#ip');
+    api('pages.mine').then(function (rows) {
+      box.innerHTML = rows.length ? rows.map(function (p) { return '<div class="card" style="margin-bottom:10px"><h3>' + esc(p.title) + '</h3>' + mdToHtml(p.body) + '</div>'; }).join('') : '<div class="card empty">لا توجد صفحات معلومات.</div>';
+    }).catch(function (e) { box.innerHTML = '<div class="empty"></div>'; box.querySelector('.empty').textContent = e.message; });
+  }
+
+  var CPK = { percent: 'نسبة %', fixed: 'مبلغ ثابت' }, CPA = { all: 'كل البرامج', course: 'الدورات', diploma: 'الدبلومات' };
+  function couponForm(row, reload) {
+    openForm({
+      title: row ? 'تعديل قسيمة' : 'قسيمة خصم جديدة', values: row || { kind: 'percent', applies: 'all', status: 'active', max_uses: 0 },
+      fields: (row ? [] : [{ key: 'code', label: 'الرمز (إنجليزي كبير وأرقام وشرطة)', required: true, maxlength: 20 }]).concat([
+        { key: 'kind', label: 'نوع الخصم', type: 'select', options: optionsFrom(CPK) }, { key: 'value', label: 'القيمة (نسبة أو مبلغ)', type: 'number', required: true },
+        { key: 'applies', label: 'تنطبق على', type: 'select', options: optionsFrom(CPA) }, { key: 'item_id', label: 'معرّف دورة/دبلوم محدد (اختياري)', maxlength: 40 },
+        { key: 'max_uses', label: 'أقصى عدد استخدامات (0 = بلا حد)', type: 'number' }, { key: 'valid_from', label: 'صالحة من', type: 'date' }, { key: 'valid_to', label: 'صالحة حتى', type: 'date' },
+        { key: 'note', label: 'ملاحظة', maxlength: 200 }, { key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ACT) }]),
+      onSubmit: function (v) { if (row) v.id = row.id; return api(row ? 'coupons.update' : 'coupons.create', v); }, onDone: function () { toast('تم الحفظ.', 'ok'); reload(); }
+    });
+  }
+  var couponsView = listView({
+    title: 'قسائم الخصم', listAction: 'coupons.list', defaultSort: 'created_at', searchPlaceholder: 'ابحث بالرمز',
+    columns: [{ key: 'code', label: 'الرمز', sortable: true }, { key: 'kind', label: 'النوع', map: CPK }, { key: 'value', label: 'القيمة' }, { key: 'applies', label: 'تنطبق على', map: CPA }, { key: 'max_uses', label: 'الحد' },
+              { key: 'valid_to', label: 'حتى' }, { key: 'status', label: 'الحالة', sortable: true, map: ACT, badge: true }],
+    filters: [{ key: 'status', label: 'كل الحالات', options: optionsFrom(ACT) }],
+    headerActions: function () { return can('coupons', 'c') ? [{ label: '+ قسيمة', run: function (reload) { couponForm(null, reload); } }] : []; },
+    rowActions: function () {
+      if (!can('coupons', 'u')) return [];
+      return [{ label: 'تعديل', run: function (r, reload) { couponForm(r, reload); } },
+              { label: 'الحالة', run: function (r, reload) { openForm({ title: 'حالة القسيمة', values: { status: r.status }, fields: [{ key: 'status', label: 'الحالة', type: 'select', options: optionsFrom(ACT) }],
+                onSubmit: function (v) { return api('coupons.setStatus', { id: r.id, status: v.status }); }, onDone: function () { toast('تم.', 'ok'); reload(); } }); } }];
+    }
+  });
+
+  /* ===================== جدول المجموعات وإحصاءاتها ===================== */
+  var WD = [{ value: '0', label: 'الأحد' }, { value: '1', label: 'الاثنين' }, { value: '2', label: 'الثلاثاء' }, { value: '3', label: 'الأربعاء' }, { value: '4', label: 'الخميس' }, { value: '5', label: 'الجمعة' }, { value: '6', label: 'السبت' }];
+  U.ext.groupSchedule = function (g, reload) {
+    openForm({
+      title: 'جدول المحاضرات التلقائي — ' + g.name, submitLabel: 'توليد المحاضرات', help: 'groups', values: { from: g.start_date, to: g.end_date, start: '18:00', end: '19:30', provider: 'link' },
+      fields: [{ key: 'days', label: 'أيام الأسبوع (اختر يومًا أو أكثر)', type: 'multiselect', required: true, options: WD },
+               { key: 'start', label: 'وقت البداية', type: 'time', required: true }, { key: 'end', label: 'وقت النهاية', type: 'time' },
+               { key: 'from', label: 'من تاريخ', type: 'date', required: true }, { key: 'to', label: 'إلى تاريخ', type: 'date', required: true },
+               { key: 'title', label: 'عنوان المحاضرات (يُضاف إليه رقمها)', maxlength: 100 },
+               { key: 'provider', label: 'نوع الفصل', type: 'select', options: [{ value: 'link', label: 'رابط خارجي' }, { value: 'jitsi', label: 'فصل مباشر داخل المنصة (غرفة لكل محاضرة)' }] },
+               { key: 'meeting_url', label: 'رابط المحاضرة (للرابط الخارجي)', maxlength: 500, showIf: { key: 'provider', value: 'link' } }],
+      onSubmit: function (v) {
+        return api('groups.generate', { group_id: g.id, days: v.days.map(function (d) { return { day: Number(d), start: v.start, end: v.end }; }), from: v.from, to: v.to, title: v.title, provider: v.provider, meeting_url: v.meeting_url })
+          .then(function (r) { toast('أُنشئت ' + r.created + ' محاضرة' + (r.skipped ? ' (تخطّي ' + r.skipped + ' موجودة)' : '') + '. يمكنك تعديل أي محاضرة من «المحاضرات».', 'ok'); });
+      },
+      onDone: function () { if (reload) reload(); }
+    });
+  };
+  var PAY = { paid: 'مسدد', partial: 'جزئي', unpaid: 'غير مسدد', none: '—' };
+  function statsModal(d) {
+    var n = document.createElement('div');
+    n.innerHTML = '<div class="cards">' + stat('المسجلون', d.members) + stat('مسدد كاملًا', d.paid) + stat('سداد جزئي', d.partial) + stat('غير مسدد', d.unpaid) + stat('المحصَّل', money(d.collected)) + stat('المتبقي', money(d.balance)) +
+      stat('متوسط الحضور %', d.avg_attendance) + stat('متوسط التقدم %', d.avg_progress) + stat('متوسط الاختبارات %', d.avg_exam) + stat('المحاضرات', d.sessions) + '</div>' +
+      '<p><button type="button" class="btn sm" data-csv>تصدير CSV</button></p>' + table(['رقم الطالب', 'الطالب', 'الهاتف', 'السداد', 'المتبقي', 'حاضر', 'غائب', 'معذور', 'الحضور %', 'التقدم %', 'الاختبارات %', 'الواجبات'], d.rows.map(function (r) {
+        return '<tr><td>' + esc(r.student_no) + '</td><td>' + esc(r.full_name) + '</td><td dir="ltr">' + esc(dash(r.phone)) + '</td><td>' + badge(PAY, r.pay_status) + '</td><td>' + money(r.balance) + '</td><td>' + r.present + '</td><td>' + r.absent + '</td><td>' + r.excused + '</td><td>' + r.attendance_pct + '</td><td>' + r.progress_pct + '</td><td>' + r.exam_avg + '</td><td>' + r.assignments_done + '/' + r.assignments_total + '</td></tr>';
+      }), 'لا يوجد مسجلون.');
+    openModal({ title: 'إحصائيات: ' + d.title, node: n, wide: true });
+    var b = n.querySelector('[data-csv]');
+    if (b) b.addEventListener('click', function () {
+      if (U.ext.exportCsv) U.ext.exportCsv('stats_' + d.title + '.csv', ['رقم الطالب', 'الطالب', 'الهاتف', 'السداد', 'المتبقي', 'حاضر', 'غائب', 'الحضور %', 'التقدم %', 'الاختبارات %'],
+        d.rows.map(function (r) { return [r.student_no, r.full_name, r.phone, PAY[r.pay_status], r.balance, r.present, r.absent, r.attendance_pct, r.progress_pct, r.exam_avg]; }));
+    });
+  }
+  U.ext.groupStats = function (g) { api('groups.stats', { group_id: g.id }).then(statsModal).catch(fail); };
+  U.ext.courseStats = function (c) { api('courses.stats', { course_id: c.id }).then(statsModal).catch(fail); };
+
+  /* ===================== القائمة ===================== */
+  U.addMenu({ id: 'wallet', label: 'محفظتي', icon: '◈', when: function (s) { return !!(s.features && s.features.wallet); }, render: walletView });
+  U.addMenu({ id: 'affiliate', label: 'التسويق بالعمولة', icon: '✦', when: function (s) { return !!(s.affiliate && (s.affiliate.has || s.affiliate.can_apply)); }, render: affiliateView });
+  U.addMenu({ id: 'walletAdmin', label: 'المحافظ والمدفوعات', icon: '◈', need: ['topup_requests', 'r'], render: walletAdminView });
+  U.addMenu({ id: 'affiliates', label: 'المسوقون والعمولات', icon: '✦', need: ['affiliates', 'r'], render: affiliatesAdminView });
+  U.addMenu({ id: 'fieldsAdmin', label: 'الحقول المخصصة', icon: '☷', need: ['field_defs', 'r'], render: fieldsAdminView });
+  U.addMenu({ id: 'lookups', label: 'القوائم المرجعية', icon: '☰', need: ['lookups', 'r'], roles: ['system_admin', 'org_admin', 'admin_staff'], render: lookupsView });
+  U.addMenu({ id: 'organizations', label: 'المؤسسات', icon: '▣', need: ['organizations', 'r'], roles: ['system_admin'], when: function (s) { return !!(s.org && s.org.is_master); }, render: orgsView });
+  U.addMenu({ id: 'documents', label: 'مستنداتي', icon: '▤', roles: ['student', 'teacher'], render: myDocsView });
+  U.addMenu({ id: 'announcements', label: 'الإعلانات', icon: '✉', roles: ['student', 'teacher', 'marketer'], render: announcementsView });
+  U.addMenu({ id: 'infoPages', label: 'معلومات المؤسسة', icon: 'ℹ', roles: ['student', 'teacher'], render: infoPagesView });
+  U.addMenu({ id: 'announcementsAdmin', label: 'إدارة الإعلانات', icon: '✉', need: ['announcements', 'r'], roles: ['system_admin', 'org_admin', 'admin_staff', 'registrar'], render: announcementsAdminView });
+  U.addMenu({ id: 'pagesAdmin', label: 'صفحات الموقع', icon: '▣', need: ['site_pages', 'r'], render: pagesAdminView });
+  U.addMenu({ id: 'coupons', label: 'قسائم الخصم', icon: '%', need: ['coupons', 'r'], render: couponsView });
+  U.addMenu({ id: 'helpAdmin', label: 'التعليمات والشروحات', icon: '؟', need: ['help_topics', 'r'], render: helpAdminView });
+})();
+</script>
+
+  <script>if ('serviceWorker' in navigator && location.protocol === 'https:') { window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }</script>
 </body>
 </html>
